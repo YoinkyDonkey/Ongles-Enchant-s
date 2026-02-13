@@ -1,0 +1,622 @@
+/* ========================
+   ROOT VARIABLES
+======================== */
+:root {
+    --background: #0f0f12;       
+    --backgroundcolor: rgb(48, 31, 31); 
+    --OngleEnchanteColor: rgb(105, 21, 46);  
+    --OngleEnchanteSecondColor: rgb(248, 193, 193);  
+    --fontcolor: #d8b36ade;        
+    --textcolor: #f5f5f5;        
+    --cardbg: #18181d;           
+    --gradient: linear-gradient(135deg, #d8b46a, #f2d488); 
+    --backgroundimages: url(Photo/Nails/IMG_1180.JPG);  
+}
+
+/* ========================
+   RESET
+======================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Playfair Display", serif;
+    background: var(--backgroundcolor);
+    color: var(--backgroundcolor);
+    line-height: 1.6;
+}
+
+/* ========================
+   LINKS & BUTTONS
+======================== */
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.btn {
+    display: inline-block;
+    padding: 0.8rem 2.4rem;
+    border-radius: 3rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    text-align: center;
+    font-size: 2rem;
+}
+
+.btn.primary {
+    background: var(--gradient);
+    color: var(--OngleEnchanteColor);
+    box-shadow: 0 5px 20px rgba(216,180,106,0.4);
+}
+
+.btn.outline {
+    background: transparent;
+    border: 1px solid var(--fontcolor);
+    color: var(--fontcolor);
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(216,180,106,0.5);
+}
+
+/* ========================
+   HEADER
+======================== */
+.site-header {
+    padding: 10px;
+    text-align: center;
+}
+
+.brand {
+    font-family: "Dancing Script", solid;
+    font-size: 3rem;
+    color: var(--OngleEnchanteSecondColor);
+    background-clip: text;
+    -webkit-background-clip: text;
+    text-shadow: 0 0 10px rgba(216, 179, 106, 0.075);
+}
+
+/* ========================
+   HERO SECTION
+======================== */
+.hero {
+    text-align: center;
+    padding: 20rem 2rem;
+    background-image: var(--backgroundimages);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    border-radius: 30px;
+}
+
+.hero h1 {
+    font-size: 5rem;
+    letter-spacing: 0.1em;
+    margin-bottom: 1rem;
+    color: var(--OngleEnchanteSecondColor);
+}
+
+.hero h2 {
+    font-weight: 400;
+    margin-bottom: 2rem;
+    font-size: 3rem;
+    color: antiquewhite;
+}
+
+/* ========================
+   ABOUT
+======================== */
+.about-section {
+  max-width: 900px;
+  margin: 80px auto;
+  padding: 0 20px;
+  border: 1px solid var(--OngleEnchanteSecondColor);
+  text-align: center;
+  border-radius: 3rem;
+  box-shadow: 0 20px 40px rgba(216,180,106,0.4);
+}
+
+.about-section h2 {
+  font-size: 3rem;
+  margin-bottom: 15px;
+  color: var(--fontcolor);
+}
+
+.about-section p {
+  font-size: 2rem;
+  line-height: 1.7;
+  color: var(--OngleEnchanteSecondColor);
+}
+
+/* ========================
+   SECTION TITLES
+======================== */
+.section-title {
+    text-align: center;
+    margin-bottom: 3rem;
+    font-size: 3rem;
+    color: var(--OngleEnchanteSecondColor);
+}
+
+/* ========================
+   SERVICES SECTION
+======================== */
+#service {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+/* Two-column layout */
+.services-columns {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.services-container {
+  padding: 16px;
+  background-color: var(--cardbg);
+  border-radius: 15px;
+  border: 1px solid var(--OngleEnchanteSecondColor);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.category-title {
+  font-weight: bold;
+  font-size: 2rem;
+  margin-bottom: 12px;
+  color: var(--fontcolor);
+}
+
+.service-card {
+  padding: 12px 16px;
+  font-family: "Playfair Display", serif;
+  font-size: 1.8rem;
+  color: var(--fontcolor);
+  border: 1px solid var(--fontcolor);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: center;
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+.service-card:hover {
+  background-color: rgb(34, 10, 37);
+  color: var(--OngleEnchanteSecondColor);
+  transform: scale(1.02);
+}
+.service-card.selected {
+  background-color: rgb(56, 15, 61);
+  color: var(--OngleEnchanteSecondColor);
+  box-shadow: 0 0 30px var(--fontcolor);
+  transform: scale(1.02);
+}
+
+/* Total Container */
+#total-container {
+  background: var(--cardbg); /* dark panel background */
+  color: var(--fontcolor);   /* gold accent text */
+  padding: 20px 30px;
+  border-radius: 2rem;
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+  border: 2px solid var(--OngleEnchanteSecondColor);
+  box-shadow: 0 10px 25px rgba(216,180,106,0.4);
+  margin-top: 30px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+#total-container:hover {
+  transform: scale(1.03);
+  box-shadow: 0 15px 30px rgba(216,180,106,0.6);
+}
+
+#total-container span {
+  color: var(--OngleEnchanteSecondColor); /* subtle contrast for numbers */
+}
+
+/* ================= HERO VIDEOS STYLING ================= */
+.hero-videos {
+    display: flex;
+    gap: 2rem; /* more space between videos */
+    justify-content: center;
+    flex-wrap: wrap;
+    max-width: 1000px; /* limit overall width */
+    margin: 3rem auto;
+}
+
+.video-container {
+    flex: 0 0 45%; /* each video takes 45% of the container width */
+    max-width: 480px; /* max width for bigger screens */
+    height: 480px; /* smaller fixed height */
+    position: relative;
+    border-radius: 28px;
+    overflow: hidden;
+    background: rgba(255,255,255,0.55);
+    backdrop-filter: blur(25px) saturate(180%);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.06);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.video-container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.08);
+}
+
+.video-container video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* covers the smaller container perfectly */
+    display: block;
+    border-radius: 28px;
+}
+/* ========================
+   GALLERY
+======================== */
+.gallery a {
+    margin: 0 auto;
+}
+
+.voirplus {
+    display: grid;
+    place-items: center;
+    margin: 50px 0;
+}
+
+.photo-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 1.5rem;
+    max-width: 1200px;
+    margin: auto;
+    padding: 0 1rem;
+}
+
+.photo {
+    border-radius: 2rem;
+    overflow: hidden;
+    background: var(--cardbg);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+    position: relative;
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
+}
+
+.photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.photo:hover img {
+    transform: scale(1.08);
+}
+
+.photo::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    border: 1px solid transparent;
+    transition: border 0.4s ease, box-shadow 0.4s ease;
+}
+
+.photo:hover::before {
+    border-color: var(--gradient);
+    box-shadow: 0 0 35px rgba(216,180,106,0.35);
+}
+
+/* ========================
+   LIGHTBOX
+======================== */
+.lightbox {
+    position: fixed;
+    inset: 0;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 9999;
+    transition: opacity 0.3s ease;
+}
+
+.lightbox:target {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.lightbox .overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(15,15,18,0.92);
+    backdrop-filter: blur(6px);
+}
+
+.lightbox img {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    max-width: 88%;
+    max-height: 88%;
+    margin: auto;
+    display: block;
+    border-radius: 2rem;
+    box-shadow: 0 0 0 1px var(--gradient), 0 40px 80px rgba(0,0,0,0.7);
+    animation: luxZoom 0.5s ease;
+}
+
+.lightbox .close {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    font-size: 3rem;
+    color: var(--gradient);
+    text-decoration: none;
+}
+
+.lightbox .close:hover {
+    transform: rotate(90deg) scale(1.1);
+    opacity: 0.85;
+}
+
+@keyframes luxZoom {
+    from {
+        transform: translateY(-50%) scale(0.9);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(-50%) scale(1);
+        opacity: 1;
+    }
+}
+
+/* ========================
+   CONTACT
+======================== */
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    max-width: 1000px;
+    margin: auto;
+    padding: 0 1rem 3rem 1rem;
+}
+
+.contact-card {
+    background: var(--cardbg);
+    padding: 2rem;
+    border-radius: 2rem;
+    text-align: center;
+    margin: 0 auto;
+    border: 1px solid var(--OngleEnchanteSecondColor);
+}
+
+.contact-card h3 {
+    margin-bottom: 0.5rem;
+    color: var(--fontcolor);
+}
+.contact-card p {
+    margin-bottom: 0.5rem;
+    color: var(--fontcolor);
+}
+.contact-card a {
+    margin-bottom: 0.5rem;
+    font-size: 20px;
+}
+
+/* ========================
+   HOURS
+======================== */
+.hours {
+    text-align: center;
+    padding: 3rem 1rem;
+}
+
+.hours ul {
+    list-style: none;
+    padding: 0;
+}
+
+.hours li {
+    margin-bottom: 0.8rem;
+}
+
+.HeureOuverture1 {
+    background-color: var(--background);
+    color: var(--fontcolor);
+    padding: 40px 30px;
+    border-radius: 2rem;
+    max-width: 500px;
+    margin: 2rem auto;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    text-align: center;
+    font-family: 'Playfair Display', serif;
+    border: 1px solid var(--OngleEnchanteSecondColor);
+}
+
+.HeureOuverture1 h1 {
+    font-size: 36px;
+    margin-bottom: 25px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.15);
+}
+
+.hours-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.hours-list li {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 20px;
+    margin-bottom: 10px;
+    border-radius: 15px;
+    background-color: rgba(248, 193, 193, 0.1);
+    transition: background 0.3s;
+}
+
+.hours-list li:hover {
+    background-color: rgba(248, 193, 193, 0.2);
+}
+
+.hours-list .day {
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.hours-list .time {
+    font-weight: 400;
+    font-size: 18px;
+}
+
+/* ========================
+   FOOTER
+======================== */
+.seo-footer {
+  text-align: center;
+  padding: 15px 10px;
+  font-size: 14px;
+  color: var(--background);
+}
+
+.seo-footer p {
+  margin: 0;
+}
+
+.site-footer {
+    text-align: center;
+    padding: 2rem;
+    opacity: 0.6;
+    display: block;
+    color: var(--background);
+}
+
+/* Floating social icons */
+.social-icons {
+    padding: 10px 1px;
+    position: fixed;
+    top: 50%;
+    right: 1%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    z-index: 10000;
+
+    /* start hidden */
+    opacity: 0;
+    transform: translateY(-50%) translateY(30px);
+
+    /* scroll animation */
+    animation: social-appear linear both;
+    animation-timeline: scroll();
+    animation-range: 200px 1000px;
+}
+
+@keyframes social-appear {
+    to {
+        opacity: 1;
+        transform: translateY(50%) translateY(0);
+    }
+}
+.video-container {
+        flex: 1 1 100%; /* stack videos on mobile */
+    }
+.social-icons a.icon img {
+    width: 50px;
+    height: 50px;
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.social-icons a.icon img:hover {
+    transform: scale(1.2);
+    filter: brightness(1.2);
+}
+
+
+/* ========================
+   RESPONSIVE
+======================== */
+@media (max-width: 768px) {
+  .services-columns {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .service-card {
+    font-size: 1.6rem;
+  }
+
+  .category-title {
+    font-size: 1.8rem;
+  }
+
+  .hero {
+    text-align: center;
+    padding: 2rem 2rem;
+    background-size: 125%;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+  }
+
+  .hero h1 {
+    font-size: 4rem;
+  }
+
+  .hero h2 {
+    font-size: 2rem;
+  }
+
+  .contact-card h3 {
+    font-size: 1.5rem;
+  }
+
+  .btn {
+    padding: 0.6rem 1.8rem;
+    font-size: 1.4rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .photo-gallery {
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  }
+.services-container {
+  padding: 16px;
+  background-color: var(--cardbg);
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+  .contact-grid {
+      grid-template-columns: 1fr;
+  }
+  .about-section h2 {
+  font-size: 2rem;
+}
+  .about-section p {
+  font-size: 1rem;
+}
+}

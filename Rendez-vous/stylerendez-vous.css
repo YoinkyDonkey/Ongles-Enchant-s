@@ -1,0 +1,378 @@
+/* ================= ROOT ================= */
+:root {
+    --background: #0f0f12;       
+    --backgroundcolor: rgb(48, 31, 31); 
+    --OngleEnchanteColor: rgb(105, 21, 46);  
+    --OngleEnchanteSecondColor: rgb(248, 193, 193);  
+    --fontcolor: #d8b36ade;        
+    --textcolor: #f5f5f5;        
+    --cardbg: #18181d;           
+    --gradient: linear-gradient(135deg, #d8b46a, #f2d488); 
+    --backgroundimages: url(Photo/Nails/IMG_1180.JPG);  
+}
+
+/* ================= GLOBAL ================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Playfair Display', serif;
+    background-color: var(--background);
+    background-image: var(--backgroundimages);
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: var(--textcolor);
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* ================= HEADER ================= */
+.site-header {
+    padding: 1.5rem 0;
+    text-align: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    backdrop-filter: blur(10px);
+}
+
+.brand {
+    font-family: 'Dancing Script', cursive;
+    font-size: 2.3rem;
+    color: var(--OngleEnchanteSecondColor);
+}
+
+
+
+/* ================= HERO ================= */
+.hero {
+    text-align: center;
+    padding: 10rem;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    color: var(--fontcolor);
+}
+
+.hero h2 {
+    font-size: 1.4rem;
+    color: var(--fontcolor);
+}
+
+/* ================= FORM CONTAINER ================= */
+form {
+    max-width: 1000px;
+    margin: -80px auto 3rem auto;
+    background: var(--backgroundcolor);
+    padding: 3rem;
+    border-radius: 30px;
+    box-shadow: 0 15px 50px rgba(0,0,0,0.7);
+    backdrop-filter: blur(6px);
+}
+
+/* ================= TITLES ================= */
+.section-title {
+    font-size: 2rem;
+    color: var(--OngleEnchanteSecondColor);
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid var(--fontcolor);
+    display: inline-block;
+}
+
+/* ================= INPUTS ================= */
+.UserInfo input,
+.UserInfo textarea,
+select {
+    width: 100%;
+    padding: 1rem;
+    margin-bottom: 1.2rem;
+    border-radius: 15px;
+    border: 1px solid var(--fontcolor);
+    background: var(--cardbg);
+    color: var(--textcolor);
+    font-size: 1rem;
+    transition: 0.3s;
+}
+
+.UserInfo input:focus,
+.UserInfo textarea:focus,
+select:focus {
+    border-color: var(--OngleEnchanteSecondColor);
+    box-shadow: 0 0 15px rgba(248,193,193,0.4);
+    outline: none;
+}
+
+/* ================= SERVICES ================= */
+.services-columns {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 1.8rem;
+}
+
+.services-container {
+    background: var(--cardbg);
+    padding: 1.2rem;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+    transition: 0.3s;
+}
+
+.services-container:hover {
+    transform: translateY(-6px);
+}
+
+.category-title {
+    text-align: center;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    color: var(--OngleEnchanteSecondColor);
+}
+
+.service-card {
+    background: var(--background);
+    padding: 1rem;
+    margin: 0.6rem 0;
+    border-radius: 15px;
+    text-align: center;
+    cursor: pointer;
+    transition: 0.3s;
+    position: relative;
+}
+
+.service-card:hover {
+    background: var(--OngleEnchanteColor);
+    color: var(--OngleEnchanteSecondColor);
+    transform: translateY(-3px);
+}
+
+/* ===== SELECTED SERVICE ===== */
+.service-card.selected {
+    background: var(--gradient);
+    color: var(--backgroundcolor);
+    border: 2px solid var(--OngleEnchanteSecondColor);
+    box-shadow: 0 0 20px rgba(242,212,136,0.6);
+    transform: scale(1.03);
+}
+
+/*.service-card.selected::after {
+    content: "✓";
+    position: absolute;
+    top: 8px;
+    right: 12px;
+    font-weight: bold;
+} */
+
+/* ================= SUMMARY ================= */
+#total-container {
+    margin-top: 2rem;
+    padding: 1.2rem;
+    background: var(--cardbg);
+    border-radius: 20px;
+    border: 1px solid var(--OngleEnchanteColor);
+    text-align: center;
+}
+
+#summary p {
+    font-size: 1.2rem;
+    color: var(--OngleEnchanteSecondColor);
+}
+
+/* ================= CALENDAR ================= */
+.calendar-nav {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin: 2rem 0;
+}
+
+.calendar-nav button {
+    background: var(--OngleEnchanteColor);
+    color: var(--OngleEnchanteSecondColor);
+    border: none;
+    padding: 0.6rem 1.4rem;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.calendar-nav button:hover {
+    background: var(--OngleEnchanteSecondColor);
+    color: var(--OngleEnchanteColor);
+}
+
+.calendar-header {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    color: var(--OngleEnchanteSecondColor);
+}
+
+#calendar {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 8px;
+}
+
+#calendar div {
+    padding: 0.9rem;
+    border-radius: 12px;
+    background: var(--cardbg);
+    text-align: center;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+/* ===== SELECTED DAY ===== */
+#calendar div.selected {
+    background: var(--gradient);
+    color: var(--backgroundcolor);
+    font-weight: bold;
+    box-shadow: 0 0 15px rgba(242,212,136,0.6);
+    transform: scale(1.05);
+}
+
+/* ===== PAST DAYS ===== */
+#calendar div.past {
+    background: #24242a;
+    color: #555;
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+/* ===== DISABLED DAYS ===== */
+#calendar div.disabled {
+    pointer-events: none;
+    opacity: 0.3;
+}
+
+/* ================= BUTTON ================= */
+.btn.primary {
+    background: var(--gradient);
+    color: var(--backgroundcolor);
+    padding: 1rem 3rem;
+    border-radius: 30px;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    margin: 2rem auto 0 auto;
+    display: block;
+    transition: 0.3s;
+}
+
+.btn.primary:hover {
+    transform: scale(1.05);
+    filter: brightness(1.1);
+}
+
+/* ================= OPENING HOURS ================= */
+.HeureOuverture1 {
+    background: var(--cardbg);
+    margin: 3rem 1rem;
+    padding: 2rem;
+    border-radius: 20px;
+    text-align: center;
+}
+
+/* ================= FOOTER ================= */
+
+.site-footer {
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+    color: var(--OngleEnchanteSecondColor);
+    font-size: 0.9rem;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+/* Floating social icons */
+.social-icons {
+    padding: 10px 1px;
+    position: fixed;
+    top: 50%;
+    right: 1%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    z-index: 10000;
+
+    /* start hidden */
+    opacity: 0;
+    transform: translateY(-50%) translateY(30px);
+
+    /* scroll animation */
+    animation: social-appear linear both;
+    animation-timeline: scroll();
+    animation-range: 200px 1000px;
+}
+
+@keyframes social-appear {
+    to {
+        opacity: 1;
+        transform: translateY(50%) translateY(0);
+    }
+}
+
+.social-icons a.icon img {
+    width: 50px;
+    height: 50px;
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.social-icons a.icon img:hover {
+    transform: scale(1.2);
+    filter: brightness(1.2);
+}
+
+.StaffAcces {
+    display: block;
+    text-align: center;
+    margin: 1rem 0;
+    color: var(--OngleEnchanteSecondColor);
+    font-weight: bold;
+}
+
+.StaffAcces:hover {
+    color: var(--backgroundcolor);
+}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width: 768px){
+    .services-columns {
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    }
+
+    .hero {
+    display: flex;
+    justify-content: center; /* horizontal centering */
+    align-items: center;     /* vertical centering */
+    flex-direction: column;  /* ensures text stacks nicely if multiple lines */
+    text-align: center;      /* optional fallback */
+}
+
+
+    .hero h1 {
+        text-align: center; /* ✅ center on phones */
+        font-size: rem;    /* optional: scale down font */
+    }
+
+
+    .hero h2 {
+        font-size: 1.2rem;
+    }
+
+    form {
+        padding: 2rem 1.5rem;
+    }
+}
