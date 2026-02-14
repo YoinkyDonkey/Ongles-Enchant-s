@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Media Admin</title>
-<link rel="stylesheet" href="../style.css">
-<link rel="stylesheet" href="stylegallery.css">
-
+<link rel="stylesheet" href="../style.css" />
+<link rel="stylesheet" href="stylegallery.css" />
 <style>
   /* MEDIA ADMIN SPECIFIC STYLES */
   #admin-gallery {
@@ -59,7 +58,22 @@
   }
 
   .delete-btn:hover {
-    background: rgba(255,0,0,0.9);
+    background: rgba(255, 0, 0, 0.9);
+  }
+
+  .btn.danger {
+    background: #c0392b;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-top: 15px;
+  }
+
+  .btn.danger:hover {
+    background: #e74c3c;
   }
 </style>
 </head>
@@ -69,11 +83,12 @@
 </header>
 
 <section>
-  <h2>Upload Image</h2>
+  <h2>Upload Images</h2>
   <form id="upload-form">
-    <input type="file" name="images" multiple>
+    <input type="file" name="images" multiple />
     <button type="submit" class="btn primary">Upload</button>
   </form>
+  <button id="delete-all-btn" class="btn danger">Delete All Images</button>
 </section>
 
 <section>
@@ -82,99 +97,123 @@
 </section>
 
 <script>
-const adminGallery = document.getElementById("admin-gallery");
-const uploadForm = document.getElementById("upload-form");
-const API_URL = "http://192.168.0.24:3000/images";
-const UPLOADS_URL = "http://192.168.0.24:3000/uploads";
+  const adminGallery = document.getElementById("admin-gallery");
+  const uploadForm = document.getElementById("upload-form");
+  const deleteAllBtn = document.getElementById("delete-all-btn");
 
-let images = [];
+  // Use LAN-accessible URL based on hostname for other devices on network
+  const BASE_URL = `${window.location.protocol}//${window.location.hostname}:3000`;
+  const API_URL = `${BASE_URL}/images`;
+  const UPLOADS_URL = `${BASE_URL}/uploads`;
 
-// Load images from server
-async function loadGallery() {
-  try {
-    const res = await fetch(`${API_URL}/images`);
-    images = await res.json();
-    renderGallery();
-  } catch(err) {
-    console.error("Failed to load gallery:", err);
-    adminGallery.innerHTML = "<p>Impossible de charger les images.</p>";
-  }
-}
+  let images = [];
 
-// Render gallery with big/small pattern
-function renderGallery() {
-  adminGallery.innerHTML = "";
-
-  images.forEach((filename, i) => {
-    const item = document.createElement("div");
-    item.className = "mosaic-item";
-
-    // Big/small pattern: 1,4,7,10,... are big
-    if ((i % 3) === 0) item.classList.add("large");
-
-    const img = document.createElement("img");
-    img.src = `${UPLOADS_URL}/${filename}`;
-    img.alt = "Image Admin";
-
-    // Delete button
-    const btn = document.createElement("button");
-    btn.className = "delete-btn";
-    btn.textContent = "Delete";
-    btn.onclick = async (e) => {
-      e.stopPropagation();
-      if (!confirm("Supprimer cette image?")) return;
-      try {
-        const res = await fetch(`${API_URL}/delete/${filename}`, { method: "DELETE" });
-        const data = await res.json();
-        if (data.success) {
-          images = images.filter(f => f !== filename);
-          renderGallery();
-        } else {
-          alert("Échec de la suppression");
-        }
-      } catch(err) {
-        alert("Erreur serveur");
-        console.error(err);
-      }
-    };
-
-    item.appendChild(img);
-    item.appendChild(btn);
-    adminGallery.appendChild(item);
-  });
-}
-
-// Upload multiple images
-uploadForm.addEventListener("submit", async (e) => {
-  e.preventDefault();
-  const files = uploadForm.images.files;
-  if (!files.length) return;
-
-  const formData = new FormData();
-  for (const file of files) {
-    formData.append("image", file);
-  }
-
-  try {
-    const res = await fetch(`${API_URL}/upload`, {
-      method: "POST",
-      body: formData
-    });
-    const data = await res.json();
-    if (data.filename) {
-      loadGallery();
-      uploadForm.reset();
-    } else {
-      alert("Échec du téléchargement de l’image.");
+  async function loadGallery() {
+    try {
+      const res = await fetch(API_URL);
+      images = await res.json();
+      renderGallery();
+    } catch (err) {
+      console.error("Failed to load gallery:", err);
+      adminGallery.innerHTML = "<p>Impossible de charger les images.</p>";
     }
-  } catch(err) {
-    alert("Erreur serveur");
-    console.error(err);
   }
-});
 
-// Initial load
-loadGallery();
+  function renderGallery() {
+    adminGallery.innerHTML = "";
+
+    images.forEach((filename, i) => {
+      const item = document.createElement("div");
+      item.className = "mosaic-item";
+
+      // Pattern: every 3rd image large
+      if (i % 3 === 0) item.classList.add("large");
+
+      const img = document.createElement("img");
+      img.src = `${UPLOADS_URL}/${encodeURIComponent(filename)}`;
+      img.alt = "Image Admin";
+
+      const btn = document.createElement("button");
+      btn.className = "delete-btn";
+      btn.textContent = "Delete";
+      btn.onclick = async (e) => {
+        e.stopPropagation();
+        if (!confirm("Supprimer cette image ?")) return;
+
+        try {
+          const res = await fetch(`${BASE_URL}/delete/${encodeURIComponent(filename)}`, {
+            method: "DELETE",
+          });
+          const data = await res.json();
+          if (data.success) {
+            images = images.filter((f) => f !== filename);
+            renderGallery();
+          } else {
+            alert("Échec de la suppression");
+          }
+        } catch (err) {
+          alert("Erreur serveur");
+          console.error(err);
+        }
+      };
+
+      item.appendChild(img);
+      item.appendChild(btn);
+      adminGallery.appendChild(item);
+    });
+  }
+
+  uploadForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const files = uploadForm.images.files;
+    if (!files.length) return alert("Please select files to upload.");
+
+    const formData = new FormData();
+    for (const file of files) {
+      formData.append("images", file); // plural 'images' to match multer
+    }
+
+    try {
+      const res = await fetch(`${BASE_URL}/upload`, {
+        method: "POST",
+        body: formData,
+      });
+      const data = await res.json();
+      if (data.filenames && data.filenames.length > 0) {
+        alert(`Uploaded ${data.filenames.length} image(s) successfully!`);
+        loadGallery();
+        uploadForm.reset();
+      } else {
+        alert("Échec du téléchargement de l’image.");
+      }
+    } catch (err) {
+      alert("Erreur serveur");
+      console.error(err);
+    }
+  });
+
+  deleteAllBtn.addEventListener("click", async () => {
+    if (!confirm("Are you sure you want to delete ALL images?")) return;
+
+    try {
+      const res = await fetch(`${BASE_URL}/delete-all`, {
+        method: "DELETE",
+      });
+      const data = await res.json();
+      if (data.success) {
+        alert(`Deleted ${data.deletedCount} images.`);
+        loadGallery();
+      } else {
+        alert("Échec de la suppression totale.");
+      }
+    } catch (err) {
+      alert("Erreur serveur");
+      console.error(err);
+    }
+  });
+
+  // Initial load
+  loadGallery();
 </script>
 </body>
 </html>

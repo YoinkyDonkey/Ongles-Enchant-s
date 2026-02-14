@@ -16,17 +16,17 @@ app.use(express.json());
 app.use(express.static('public'));
 app.use('/uploads', express.static(UPLOAD_DIR));
 
-// ------------------ Multer Config ------------------
+// Multer config: store files with unique timestamp names
 const storage = multer.diskStorage({
   destination: (req, file, cb) => cb(null, UPLOAD_DIR),
   filename: (req, file, cb) => {
     const ext = path.extname(file.originalname);
-    cb(null, Date.now() + ext);
+    cb(null, Date.now() + '-' + Math.round(Math.random() * 1e9) + ext);
   }
 });
 const upload = multer({ storage });
 
-// ------------------ SSE Clients ------------------
+// SSE clients for real-time update
 let sseClients = [];
 
 app.get('/events', (req, res) => {
@@ -43,21 +43,22 @@ app.get('/events', (req, res) => {
   });
 });
 
-// Broadcast SSE events
 function broadcastEvent(event) {
   sseClients.forEach(client => {
     client.write(`data: ${JSON.stringify(event)}\n\n`);
   });
 }
 
-// ------------------ Routes ------------------
+// Upload multiple images route
+app.post('/upload', upload.array('images', 20), (req, res) => {
+  if (!req.files || req.files.length === 0) {
+    return res.status(400).json({ error: 'No files uploaded' });
+  }
 
-// Upload a new image
-app.post('/upload', upload.single('image'), (req, res) => {
-  if (!req.file) return res.status(400).json({ error: 'No file uploaded' });
+  const filenames = req.files.map(file => file.filename);
+  filenames.forEach(filename => broadcastEvent({ type: 'add', filename }));
 
-  broadcastEvent({ type: 'add', filename: req.file.filename });
-  res.json({ filename: req.file.filename });
+  res.json({ filenames });
 });
 
 // Get list of images
@@ -85,8 +86,29 @@ app.delete('/delete/:filename', (req, res) => {
   });
 });
 
-// ------------------ Start Server ------------------
-// ------------------ Start Server ------------------
-app.listen(PORT, "0.0.0.0", () => {
+// Delete all images route
+app.delete('/delete-all', (req, res) => {
+  fs.readdir(UPLOAD_DIR, (err, files) => {
+    if (err) return res.status(500).json({ success: false, error: 'Failed to read directory' });
+
+    const images = files.filter(f => /\.(jpe?g|png|gif|webp)$/i.test(f));
+    let deletedCount = 0;
+
+    images.forEach((file) => {
+      const filePath = path.join(UPLOAD_DIR, file);
+      fs.unlink(filePath, (err) => {
+        if (!err) {
+          broadcastEvent({ type: 'delete', filename: file });
+          deletedCount++;
+        }
+      });
+    });
+
+    res.json({ success: true, deletedCount });
+  });
+});
+
+// Start server
+app.listen(PORT, '0.0.0.0', () => {
   console.log(`Server running on http://0.0.0.0:${PORT}`);
 });

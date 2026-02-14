@@ -4,27 +4,21 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Ongles Enchantés - Galerie</title>
-<link rel="icon" href="/Photo/Icon and Logo/nice logo.jpg">
-
+<link rel="icon" href="../Photo/Icon and Logo/nice logo.jpg">
 <link rel="stylesheet" href="stylegallery.css">
-
 
 </head>
 <body>
 
-<!-- HEADER -->
-    <header class="site-header" id="toppage">
-        <a href="index.html">
-        <h1 class="brand">Ongles Enchantés</h1>
-        </a>
-    </header>
+<header class="site-header" id="toppage">
+  <a href="index.html"><h1 class="brand">Ongles Enchantés</h1></a>
+</header>
 
-    <!-- HERO -->
-    <section class="hero">
-        <h1>A NEW ERA OF ME</h1>
-        <h2>Beauty Salon - Head Spa</h2>
-        <a href="Rendez-vous/index.html" class="btn primary">Prendre un rendez-vous</a>
-    </section>
+<section class="hero">
+  <h1>A NEW ERA OF ME</h1>
+  <h2>Beauty Salon - Head Spa</h2>
+  <a href="/Rendez-vous/index.html" class="btn primary">Prendre un rendez-vous</a>
+</section>
 
 <section id="gallery">
   <h2 class="section-title">Notre Galerie</h2>
@@ -55,7 +49,7 @@
             </div>
             <div class="contact-card">
                 <h3>Rendez-vous</h3>
-                 <a href="Rendez-vous/index.html" target="_blank" class="btn outline">Prendre un rendez-vous</a>
+                 <a href="/Rendez-vous/index.html" target="_blank" class="btn outline">Prendre un rendez-vous</a>
 
 
             </div>
@@ -82,32 +76,23 @@
         </div>
 
         <header class="site-header">
-        <a href="/Media-admin/public/index.html">
+        <a href="#toppage">
         <h1 class="brand">Ongles Enchantés</h1>
         </a>
     </header>
         <p>&copy; 2026 Ongles Enchantés</p>
     </footer>
 
-    <!-- Icon -->
-    <div class="social-icons">
-    <a href="https://www.facebook.com/Onglesenchanteslasalle" target="_blank" class="icon facebook">
-        <img src="/Photo/Icon and Logo/facebook.png" alt="Facebook">
-    </a>
-    <a href="https://www.instagram.com/ongles.enchantes/" target="_blank" class="icon instagram">
-        <img src="/Photo/Icon and Logo/Instagram.png" alt="Instagram">
-    </a>
-    </div>
-
 <script>
 const galleryGrid = document.getElementById("gallery-grid");
 const lightboxContainer = document.getElementById("lightbox-container");
-const API_URL = "http://192.168.0.24:3000/images";
-const UPLOADS_URL = "http://192.168.0.24:3000/uploads";
+
+const BASE_URL = `${window.location.protocol}//${window.location.hostname}:3000`;
+const API_URL = `${BASE_URL}/images`;
+const UPLOADS_URL = `${BASE_URL}/uploads`;
 
 let images = [];
 
-// Load all images initially
 async function loadGallery() {
   try {
     const res = await fetch(API_URL);
@@ -119,7 +104,6 @@ async function loadGallery() {
   }
 }
 
-// Render gallery & lightboxes
 function renderGallery() {
   galleryGrid.innerHTML = "";
   lightboxContainer.innerHTML = "";
@@ -129,55 +113,47 @@ function renderGallery() {
     const prevId = "img" + (index === 0 ? images.length : index);
     const nextId = "img" + (index === images.length - 1 ? 1 : index + 2);
 
-    // Decide class: large square pattern
-    // Pattern: 1,4,7,10… large; others small
-    const largeIndexes = [];
-    for (let i = 0; i < images.length; i += 3) {
-      largeIndexes.push(i);
-    }
-    const isLarge = largeIndexes.includes(index);
+    const isLarge = index % 3 === 0;
 
-    // Thumbnail
     const link = document.createElement("a");
     link.href = "#" + id;
     link.className = "mosaic-item" + (isLarge ? " large" : "");
     const img = document.createElement("img");
-    img.src = `${UPLOADS_URL}/${filename}`;
+    img.src = `${UPLOADS_URL}/${encodeURIComponent(filename)}`;
     img.alt = "Nail Design";
     img.onerror = () => link.remove();
     link.appendChild(img);
     galleryGrid.appendChild(link);
 
-    // Lightbox
     const lightbox = document.createElement("div");
     lightbox.className = "lightbox";
     lightbox.id = id;
     lightbox.innerHTML = `
       <a href="#_" class="close">&times;</a>
       <a href="#${prevId}" class="prev">&#10094;</a>
-      <img src="${UPLOADS_URL}/${filename}" alt="Nail Design" />
+      <img src="${UPLOADS_URL}/${encodeURIComponent(filename)}" alt="Nail Design" />
       <a href="#${nextId}" class="next">&#10095;</a>
     `;
     lightboxContainer.appendChild(lightbox);
   });
 }
 
-// Listen for live updates via SSE
-const evtSource = new EventSource("http://localhost:3000/events");
-evtSource.onmessage = (e) => {
+// SSE live updates
+const evtSource = new EventSource(`${BASE_URL}/events`);
+evtSource.onmessage = e => {
   const event = JSON.parse(e.data);
-  if(event.type === "add") {
+  if (event.type === "add" && !images.includes(event.filename)) {
     images.push(event.filename);
-  } else if(event.type === "delete") {
+  } else if (event.type === "delete") {
     images = images.filter(f => f !== event.filename);
+  } else if (event.type === "delete-all") {
+    images = [];
   }
   renderGallery();
 };
 
-// Initial load
 loadGallery();
 </script>
-
 
 </body>
 </html>
