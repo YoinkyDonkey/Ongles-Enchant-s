@@ -10,7 +10,7 @@
     --textcolor: #f5f5f5;        
     --cardbg: #18181d;           
     --gradient: linear-gradient(135deg, #d8b46a, #f2d488); 
-    --backgroundimages: url(Photo/Nails/IMG_1180.JPG);  
+    --backgroundimages: url(/Photo/Nails/IMG_1180.JPG);  
 }
 
 /* ========================
@@ -620,3 +620,4 @@ a {
   font-size: 1rem;
 }
 }
+
