@@ -3,7 +3,7 @@
 ======================== */
 :root {
     --background: #0f0f12;       
-    --backgroundcolor: rgb(48, 31, 31); 
+    --backgroundcolor: rgb(105, 21, 46); 
     --OngleEnchanteColor: rgb(105, 21, 46);  
     --OngleEnchanteSecondColor: rgb(248, 193, 193);  
     --fontcolor: #d8b36ade;        
@@ -28,7 +28,7 @@ html {
 
 body {
     font-family: "Playfair Display", serif;
-    background: var(--OngleEnchanteColor);
+    background: var(--backgroundcolor);
     color: var(--backgroundcolor);
     line-height: 1.6;
 }

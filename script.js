@@ -56,13 +56,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const docHeight = document.body.scrollHeight - window.innerHeight;
     const scrollPercent = scrollTop / docHeight;
 
-    const startColor = [105, 21, 46]; 
-    const endColor = [172, 147, 98]; 
+    const startColor = [105, 21, 46]; // dark red
+    const endColor = [172, 147, 98];  // light beige
 
     const r = Math.round(startColor[0] + (endColor[0] - startColor[0]) * scrollPercent);
     const g = Math.round(startColor[1] + (endColor[1] - startColor[1]) * scrollPercent);
     const b = Math.round(startColor[2] + (endColor[2] - startColor[2]) * scrollPercent);
 
     document.documentElement.style.setProperty('--backgroundcolor', `rgb(${r}, ${g}, ${b})`);
+
   });
 });
