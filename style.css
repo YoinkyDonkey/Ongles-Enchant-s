@@ -10,7 +10,7 @@
     --textcolor: #f5f5f5;        
     --cardbg: #18181d;           
     --gradient: linear-gradient(135deg, #d8b46a, #f2d488); 
-    --backgroundimages: url(/Photo/Nails/IMG_1180.JPG);  
+    --backgroundimages: url(Photo/Nails/IMG_1180.JPG);  
 }
 
 /* ========================
@@ -28,7 +28,7 @@ html {
 
 body {
     font-family: "Playfair Display", serif;
-    background: var(--backgroundcolor);
+    background: var(--OngleEnchanteColor);
     color: var(--backgroundcolor);
     line-height: 1.6;
 }
@@ -74,7 +74,11 @@ a {
 .site-header {
     padding: 10px;
     text-align: center;
-}
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    backdrop-filter: blur(10px);
+  }
 
 .brand {
     font-family: "Dancing Script", solid;
@@ -83,6 +87,7 @@ a {
     background-clip: text;
     -webkit-background-clip: text;
     text-shadow: 0 0 10px rgba(216, 179, 106, 0.075);
+    
 }
 
 /* ========================
@@ -90,11 +95,18 @@ a {
 ======================== */
 .hero {
     text-align: center;
-    padding: 20rem 2rem;
+    padding: 30rem 2rem;              /* vertical space for text */
+    border-radius: 50px;              /* nice curved corners */
+    position: relative;
+    border: 2px solid var(--fontcolor); /* border around the hero */
     background-image: var(--backgroundimages);
     background-repeat: no-repeat;
-    background-size: 100%;
-    border-radius: 30px;
+    background-size: 100%;           /* fills the entire hero */
+    background-position: center;      /* centers the image */
+    overflow: hidden;                 /* keeps corners rounded inside border */
+
+    max-width: 1200px;                /* prevents hero from stretching full screen */
+    margin: 2rem auto;                /* centers hero and adds horizontal spacing */
 }
 
 .hero h1 {
@@ -110,6 +122,7 @@ a {
     font-size: 3rem;
     color: antiquewhite;
 }
+
 
 /* ========================
    ABOUT
@@ -234,6 +247,12 @@ a {
 
 #total-container span {
   color: var(--OngleEnchanteSecondColor); /* subtle contrast for numbers */
+
+}
+
+.services-container h1 {
+    font-size: 1.25rem;
+    color: #d6d6d6f5;
 }
 
 /* ================= HERO VIDEOS STYLING ================= */
@@ -392,6 +411,9 @@ a {
 /* ========================
    CONTACT
 ======================== */
+
+
+
 .contact-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -572,13 +594,26 @@ a {
     font-size: 1.8rem;
   }
 
+  .menu-btn span {
+    display: block;
+    height: 4px;
+    background: var(--fontcolor);
+    margin: 5px 0;
+    transition: 0.4s;
+  }
+
   .hero {
     text-align: center;
-    padding: 2rem 2rem;
-    background-size: 125%;
-    border-bottom-left-radius: 30px;
-    border-bottom-right-radius: 30px;
-  }
+    padding: 1rem 2rem;              /* vertical space for text */
+    position: relative;
+    border: 2px solid var(--fontcolor); /* border around the hero */
+    background-repeat: no-repeat;
+    background-size: 130%;           /* fills the entire hero */
+    background-position: center;      /* centers the image */
+
+    max-width: 375px;                /* prevents hero from stretching full screen */
+    margin: 2rem auto;                /* centers hero and adds horizontal spacing */
+}
 
   .hero h1 {
     font-size: 4rem;
@@ -606,9 +641,7 @@ a {
   padding: 16px;
   background-color: var(--cardbg);
   border-radius: 15px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  columns: 50px;
 }
   .contact-grid {
       grid-template-columns: 1fr;
@@ -620,4 +653,3 @@ a {
   font-size: 1rem;
 }
 }
-

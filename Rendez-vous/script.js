@@ -105,6 +105,7 @@ function generateCalendar() {
   const firstDay = date.getDay();
   const lastDate = new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();
 
+  // Empty divs for offset
   for (let i = 0; i < firstDay; i++) {
     calendar.appendChild(document.createElement("div"));
   }
@@ -115,8 +116,10 @@ function generateCalendar() {
     dayDiv.textContent = d;
 
     const fullDate = new Date(date.getFullYear(), date.getMonth(), d);
+    const dayOfWeek = fullDate.getDay();
 
-    if (fullDate < today) {
+    // Disable past dates and Sundays
+    if (fullDate < today || dayOfWeek === 0) {
       dayDiv.classList.add("disabled");
     } else {
       dayDiv.addEventListener("click", () => {
@@ -133,6 +136,7 @@ function generateCalendar() {
     calendar.appendChild(dayDiv);
   }
 }
+
 
 /* =========================
    WORKING HOURS
@@ -180,13 +184,15 @@ function populateTimes() {
   const totalDuration = selectedServices.reduce((sum, s) => sum + s.duration, 0);
 
   // Loop through hours
-  for (let hour = workingHours.start; hour < workingHours.end; hour += 0.5) {
-    const h = Math.floor(hour);
-    const m = (hour % 1 === 0.5 ? 30 : 0);
+  for (let minutes = workingHours.start * 60; minutes < workingHours.end * 60; minutes += 15) {
+    const h = Math.floor(minutes / 60);
+    const m = minutes % 60;
 
     const startTime = new Date(year, month - 1, day, h, m, 0);
     const endTime = new Date(startTime);
     endTime.setMinutes(endTime.getMinutes() + totalDuration);
+
+
 
     // Skip if endTime goes past working hours
     if ((endTime.getHours() + endTime.getMinutes() / 60) > workingHours.end) {
@@ -244,7 +250,7 @@ form.addEventListener("submit", async e => {
       createdAt: Timestamp.now()
     });
 
-    confirmation.textContent = "Appointment booked successfully ✨";
+    confirmation.textContent = "Votre rendez-vous a été envoyé avec succès. Nous vous confirmerons bientôt via votre numéro de téléphone ✨";
 
     form.reset();
     selectedServices = [];

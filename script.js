@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const docHeight = document.body.scrollHeight - window.innerHeight;
     const scrollPercent = scrollTop / docHeight;
 
-    const startColor = [48, 31, 31]; 
+    const startColor = [105, 21, 46]; 
     const endColor = [172, 147, 98]; 
 
     const r = Math.round(startColor[0] + (endColor[0] - startColor[0]) * scrollPercent);

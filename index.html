@@ -15,6 +15,149 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pure CSS Right Slide Menu</title>
+
+</head>
+<body>
+
+<!-- Checkbox -->
+<input type="checkbox" id="menu-toggle">
+
+<!-- Hamburger -->
+<label for="menu-toggle" class="menu-btn">
+  <span></span>
+  <span></span>
+  <span></span>
+</label>
+
+<!-- Side Navigation -->
+<nav class="side-nav">
+  <a href="#">Home</a>
+  <a href="#about">About</a>
+  <a href="#service">Services</a>
+  <a href="#gallery">Gallerie</a>
+  <a href="#horaire">Horaire</a>
+  <a href="Rendez-vous/index.html">Rendez-vous</a>
+  
+</nav>
+
+<!-- Overlay (click to close) -->
+<label for="menu-toggle" class="overlay"></label>
+
+<style>
+
+  /* ========================
+   Nav bar
+======================== */
+  /* Hidden checkbox */
+  #menu-toggle {
+    display: none;
+    
+  }
+
+  /* Hamburger button */
+  .menu-btn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 30px;
+    height: 25px;
+    cursor: pointer;
+    z-index: 1002;
+  }
+
+  .menu-btn span {
+    display: block;
+    height: 4px;
+    background: var(--fontcolor);
+    margin: 6px 0;
+    transition: 0.4s;
+  }
+
+  /* Animate hamburger to X */
+  #menu-toggle:checked + .menu-btn span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+
+  #menu-toggle:checked + .menu-btn span:nth-child(2) {
+    opacity: 0;
+  }
+
+  #menu-toggle:checked + .menu-btn span:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -6px);
+  }
+
+  /* Side menu */
+  .side-nav {
+    position: fixed;
+    top: 0;
+    right: -260px;
+    width: 260px;
+    height: 100%;
+    background: var(--OngleEnchanteColor);
+    padding-top: 80px;
+    transition: 0.4s ease;
+    z-index: 1001;
+    border: 2px solid var(--fontcolor);
+  }
+
+  .side-nav a {
+    display: block;
+    padding: 15px 25px;
+    font-size: 2rem;
+    color: var(--fontcolor);
+    text-decoration: none;
+    transition: 0.3s;
+  }
+
+  .side-nav a:hover {
+    background: var(--textcolor);
+    color: var(--background);
+  }
+
+  /* Show menu when checked */
+  #menu-toggle:checked ~ .side-nav {
+    right: 0;
+    
+  }
+
+  /* Overlay */
+  .overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.4);
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.4s;
+    z-index: 1000;
+  }
+
+  #menu-toggle:checked ~ .overlay {
+    opacity: 1;
+    visibility: visible;
+  }
+/* ========================
+   RESPONSIVE
+======================== */
+@media (max-width: 768px) {
+
+
+  .menu-btn span {
+    display: block;
+    height: 4px;
+    background: var(--fontcolor);
+    margin: 5px 0;
+    transition: 0.4s;
+  }
+  }
+
+</style>
+
+</body>
+
 
     <!-- HEADER -->
     <header class="site-header" id="toppage">
@@ -32,7 +175,7 @@
 
 
     <!-- ABOUT -->
-<section id="about" class="about-section">
+<section id="about" class="about-section" id="#about">
     <h2>Ongles Enchantés</h2>
     <p>
         Situé à <strong>Montréal</strong>, dans l’arrondissement <strong>LaSalle</strong>, Ongles Enchantés est un salon d’ongles et spa capillaire japonais dédié à la beauté et au bien-être. Spécialisés en manucure, pédicure et head spa, nous combinons savoir-faire, produits de qualité et hygiène irréprochable. Notre mission est d’offrir une expérience relaxante et personnalisée, avec un service attentionné et des résultats durables.
@@ -41,27 +184,27 @@
 
 <!-- SERVICES -->
 <section id="service">
-  <h2 class="section-title">Nos Services</h2>
+  <h2 class="section-title" id="#service">Nos Services</h2>
 
   <div class="services-columns">
 
     <!-- Manucure -->
     <div class="services-container">
       <p class="category-title">Manucure</p>
-      <div class="service-card" data-category="Manucure" data-name="ManiSansCouleur" data-duration="30" data-price="20">
-        Mani sans couleur<br>30 min · $20
+      <div class="service-card" data-category="Manucure" data-name="ManiOrdi" data-duration="30" data-price="25">
+        Mani ordinaire<br>30 min · $25++
       </div>
-      <div class="service-card" data-category="Manucure" data-name="ManiOrdi" data-duration="45" data-price="25">
-        Mani ordinaire<br>45 min · $25
+      <div class="service-card" data-category="Manucure" data-name="CouleurSeul" data-duration="30" data-price="35">
+        Couleur seulement<br>30 min · $35++
       </div>
-      <div class="service-card" data-category="Manucure" data-name="CouleurSeul" data-duration="60" data-price="15">
-        Couleur seulement<br>60 min · $15
+      <div class="service-card" data-category="Manucure" data-name="ManiShellac" data-duration="45" data-price="40">
+        Mani shellac<br>45 min · $40++
       </div>
-      <div class="service-card" data-category="Manucure" data-name="ManiShellac" data-duration="60" data-price="40">
-        Mani shellac<br>60 min · $40
+      <div class="service-card" data-category="Manucure" data-name="ManiShellac" data-duration="45" data-price="15">
+        Mani parafine <br>15 min · $15++
       </div>
-      <div class="service-card" data-category="Manucure" data-name="CouleurSeulPlus" data-duration="60" data-price="35">
-        Couleur seulement<br>60 min · $35+
+      <div class="service-card" data-category="Manucure" data-name="ManiShellac" data-duration="45" data-price="15">
+        Mani française <br>10-15$++
       </div>
     </div>
 
@@ -69,36 +212,36 @@
     <div class="services-container">
       <p class="category-title">Pedicure</p>
       <div class="service-card" data-category="Pedicure" data-name="PediOrdi" data-duration="30" data-price="40">
-        Pedi ordinaire<br>30 min · $40+
+        Pedi ordinaire<br>30 min · $40++
       </div>
-      <div class="service-card" data-category="Pedicure" data-name="PediCouleur" data-duration="45" data-price="25">
-        Couleur seulement<br>45 min · $25
+      <div class="service-card" data-category="Pedicure" data-name="PediCouleur" data-duration="20" data-price="25">
+        Couleur ordinaire seulement<br>20 min · $25++
       </div>
       <div class="service-card" data-category="Pedicure" data-name="PediShellac" data-duration="60" data-price="55">
-        Pedi shellac<br>60 min · $55
+        Pedi shellac<br>45-60 min · $55++
       </div>
-      <div class="service-card" data-category="Pedicure" data-name="PediCouleurPlus" data-duration="60" data-price="35">
-        Couleur seulement<br>60 min · $35
+      <div class="service-card" data-category="Pedicure" data-name="PediCouleurPlus" data-duration="30" data-price="35">
+        Couleur shellac seulement<br>30 min · $35++
       </div>
-      <div class="service-card" data-category="Pedicure" data-name="CouperOngles" data-duration="60" data-price="15">
-        Couper d'ongles orteils<br>60 min · $15+
+      <div class="service-card" data-category="Pedicure" data-name="CouperOngles" data-duration="15" data-price="15">
+        Pedi parafine <br>15 min · $15++
+      </div>
+      <div class="service-card" data-category="Pedicure" data-name="CouperOngles" data-duration="15" data-price="20">
+        Couper d'ongles orteils<br>15 min · $20++
       </div>
     </div>
 
-    <!-- Spa Capillair -->
+    <!-- Construction -->
     <div class="services-container">
-      <p class="category-title">Spa Capillair</p>
-      <div class="service-card" data-category="Spa Capillair" data-name="DeBase" data-duration="45" data-price="65">
-        De Base<br>45 min · $65
+      <p class="category-title">Construction</p>
+      <div class="service-card" data-category="Construction" data-name="Extension" data-duration="30" data-price="60">
+        Extension (UV, BioGel)<br>60 min · $60+
       </div>
-      <div class="service-card" data-category="Spa Capillair" data-name="Classique" data-duration="60" data-price="95">
-        Classique<br>60 min · $95
+      <div class="service-card" data-category="Construction" data-name="Remplissage" data-duration="45" data-price="50">
+        Remplissage<br>45-60 min · $50+
       </div>
-      <div class="service-card" data-category="Spa Capillair" data-name="Delux" data-duration="75" data-price="115">
-        Delux<br>75 min · $115
-      </div>
-      <div class="service-card" data-category="Spa Capillair" data-name="Premium" data-duration="140" data-price="140">
-        Premium<br>140 min · $140
+      <div class="service-card" data-category="Construction" data-name="Overlay" data-duration="60" data-price="55">
+        Overlay (Renforcement des ongles naturels)<br>45-60 min · $55+
       </div>
     </div>
 
@@ -122,24 +265,30 @@
       </div>
     </div>
 
-    <!-- Construction -->
+    <!-- Spa Capillair -->
     <div class="services-container">
-      <p class="category-title">Construction</p>
-      <div class="service-card" data-category="Construction" data-name="Extension" data-duration="30" data-price="60">
-        Extension (UV, BioGel)<br>30 min · $60+
+      <p class="category-title">Spa Capillair</p>
+      <div class="service-card" data-category="Spa Capillair" data-name="DeBase" data-duration="45" data-price="65">
+        De Base<br>45 min · $65++
       </div>
-      <div class="service-card" data-category="Construction" data-name="Remplissage" data-duration="45" data-price="50">
-        Remplissage<br>45 min · $50+
+      <div class="service-card" data-category="Spa Capillair" data-name="Classique" data-duration="60" data-price="95">
+        Classique<br>60 min · $95++
       </div>
-      <div class="service-card" data-category="Construction" data-name="Overlay" data-duration="60" data-price="55">
-        Overlay (Renforcement des ongles naturels)<br>60 min · $55+
+      <div class="service-card" data-category="Spa Capillair" data-name="Delux" data-duration="75" data-price="115">
+        Delux<br>75 min · $115++
+      </div>
+      <div class="service-card" data-category="Spa Capillair" data-name="Premium" data-duration="140" data-price="140">
+        Premium<br>140 min · $140++
       </div>
     </div>
+
 
     <!-- Total Section -->
     <div class="services-container">
       <div id="total-container">
         Total: $<span id="total-price">0</span> · <span id="total-time">0</span> min
+        <h1>Veuillez noter que le montant total et le délai indiqués sont des estimations. Ils peuvent varier et ne sont pas définitifs.</h1>
+        <a href="Rendez-vous/index.html" target="_blank" class="btn outline">Prendre un rendez-vous</a>
       </div>
     </div>
   </div>
@@ -171,7 +320,7 @@
         <div class="photo-gallery">
             <a href="#img1" class="photo"><img src="Photo/Nails/6b647aae-6654-482b-b204-11cd316b7dd7.jpg" alt="Nail design 1"></a>
             <a href="#img2" class="photo"><img src="Photo/Nails/da2c9bae-b26a-4805-a5c5-3ba67ba5a207.jpg" alt="Nail design 2"></a>
-            <a href="#img3" class="photo"><img src="Photo/Nails/6e6262d7-a0e2-4fe2-9ff0-e7568805346c.jpg" alt="Nail design 3"></a>
+            <a href="#img3" class="photo"><img src="Photo/Nails/IMG_8023.JPG" alt="Nail design 3"></a>
             <a href="#img4" class="photo"><img src="Photo/Nails/543eb72b-a913-465c-b785-1888a69aa2b1.jpg" alt="Nail design 4"></a>
             <a href="#img5" class="photo"><img src="Photo/Nails/8e36c5ef-6647-4583-8db6-d9de69e0dd71.jpg" alt="Nail design 5"></a>
             <a href="#img6" class="photo"><img src="Photo/Nails/e578bd17-d73b-42ef-b357-9d72eae1cb1a.jpg" alt="Spa design 1"></a>
@@ -195,7 +344,7 @@
     </div>
     <div id="img3" class="lightbox">
         <a href="#gallery" class="overlay"></a>
-        <img src="Photo/Nails/6e6262d7-a0e2-4fe2-9ff0-e7568805346c.jpg" alt="Zoom Nail design 3">
+        <img src="Photo/Nails/IMG_8023.JPG" alt="Zoom Nail design 3">
         <a href="#gallery" class="close">&times;</a>
     </div>
     <div id="img4" class="lightbox">
@@ -249,7 +398,7 @@
     </section>
 
     
-    <section class="HeureOuverture1">
+    <section class="HeureOuverture1" id="horaire">
             <h1>Heures d'ouverture</h1>
             <ul class="hours-list">
                 <li><span class="day">Lundi - Mercredi:</span> <span class="time">9h30 - 18h00</span></li>
@@ -289,4 +438,3 @@
 
 </body>
 </html>
-

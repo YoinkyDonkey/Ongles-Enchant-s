@@ -1,6 +1,143 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+  <body>
+
+<!-- Checkbox -->
+<input type="checkbox" id="menu-toggle">
+
+<!-- Hamburger -->
+<label for="menu-toggle" class="menu-btn">
+  <span></span>
+  <span></span>
+  <span></span>
+</label>
+
+<!-- Side Navigation -->
+<nav class="side-nav">
+  <a href="#">Home</a>
+  <a href="#about">About</a>
+  <a href="#service">Services</a>
+  <a href="#Gallery">Gallerie</a>
+  <a href="#horaire">Horaire</a>
+  <a href="Rendez-vous/index.html">Rendez-vous</a>
+  
+</nav>
+
+<!-- Overlay (click to close) -->
+<label for="menu-toggle" class="overlay"></label>
+
+<style>
+
+  /* ========================
+   Nav bar
+======================== */
+  /* Hidden checkbox */
+  #menu-toggle {
+    display: none;
+    
+  }
+
+  /* Hamburger button */
+  .menu-btn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 30px;
+    height: 25px;
+    cursor: pointer;
+    z-index: 1002;
+  }
+
+  .menu-btn span {
+    display: block;
+    height: 4px;
+    background: var(--fontcolor);
+    margin: 6px 0;
+    transition: 0.4s;
+  }
+
+  /* Animate hamburger to X */
+  #menu-toggle:checked + .menu-btn span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+
+  #menu-toggle:checked + .menu-btn span:nth-child(2) {
+    opacity: 0;
+  }
+
+  #menu-toggle:checked + .menu-btn span:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -6px);
+  }
+
+  /* Side menu */
+  .side-nav {
+    position: fixed;
+    top: 0;
+    right: -260px;
+    width: 260px;
+    height: 100%;
+    background: var(--OngleEnchanteColor);
+    padding-top: 80px;
+    transition: 0.4s ease;
+    z-index: 1001;
+    border: 2px solid var(--fontcolor);
+  }
+
+  .side-nav a {
+    display: block;
+    padding: 15px 25px;
+    font-size: 2rem;
+    color: var(--fontcolor);
+    text-decoration: none;
+    transition: 0.3s;
+  }
+
+  .side-nav a:hover {
+    background: var(--textcolor);
+    color: var(--background);
+  }
+
+  /* Show menu when checked */
+  #menu-toggle:checked ~ .side-nav {
+    right: 0;
+    
+  }
+
+  /* Overlay */
+  .overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.4);
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.4s;
+    z-index: 1000;
+  }
+
+  #menu-toggle:checked ~ .overlay {
+    opacity: 1;
+    visibility: visible;
+  }
+/* ========================
+   RESPONSIVE
+======================== */
+@media (max-width: 768px) {
+
+
+  .menu-btn span {
+    display: block;
+    height: 4px;
+    background: var(--fontcolor);
+    margin: 5px 0;
+    transition: 0.4s;
+  }
+  }
+
+</style>
+
+</body>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ongles Enchantés</title>

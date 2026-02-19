@@ -8,7 +8,7 @@
     --textcolor: #f5f5f5;        
     --cardbg: #18181d;           
     --gradient: linear-gradient(135deg, #d8b46a, #f2d488); 
-    --backgroundimages: url(Photo/Nails/IMG_1180.JPG);  
+    --backgroundimages: url(/Photo/Nails/IMG_7203.JPG);  
 }
 
 /* ================= GLOBAL ================= */
@@ -22,6 +22,7 @@ body {
     font-family: 'Playfair Display', serif;
     background-color: var(--background);
     background-image: var(--backgroundimages);
+    backdrop-filter: blur(10px);
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -55,12 +56,17 @@ a {
 /* ================= HERO ================= */
 .hero {
     text-align: center;
-    padding: 10rem;
+    padding: 20rem 2rem;
+    background-image: var(--backgroundimages);
+    background-repeat: no-repeat;
+    background-position: center -300px;
+    background-size: 60%;
+    overflow: hidden;
 }
 
 .hero h1 {
-    font-size: 3rem;
-    color: var(--fontcolor);
+    font-size:4rem;
+    color: var(--OngleEnchanteColor);
 }
 
 .hero h2 {
@@ -71,7 +77,7 @@ a {
 /* ================= FORM CONTAINER ================= */
 form {
     max-width: 1000px;
-    margin: -80px auto 3rem auto;
+    margin: 80px auto 3rem auto;
     background: var(--backgroundcolor);
     padding: 3rem;
     border-radius: 30px;
@@ -290,8 +296,9 @@ select:focus {
     padding: 2rem;
     text-align: center;
     margin-top: 2rem;
-    color: var(--OngleEnchanteSecondColor);
-    font-size: 0.9rem;
+    color: var(--OngleEnchanteColor);
+    font-size: 1rem;
+    font-weight: bold;
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
 }
@@ -349,24 +356,60 @@ select:focus {
 
 /* ===== RESPONSIVE ===== */
 @media(max-width: 768px){
+
+    /* ================= HEADER ================= */
+.site-header {
+    padding: 1.5rem 0;
+    text-align: center;
+    position: sticky;
+    top: 0;
+}
+
+.brand {
+    font-family: 'Dancing Script', cursive;
+    font-size: 3rem;
+    color: var(--OngleEnchanteSecondColor);
+}
+
+    body {
+    font-family: 'Playfair Display', serif;
+    background-color: var(--background);
+    background-image: var(--backgroundimages);
+    backdrop-filter: blur(10px);
+    background-size: 500%;
+    background-position: center;
+    background-attachment: fixed;
+    color: var(--textcolor);
+    line-height: 1.6;
+    
+}
+
+
     .services-columns {
         grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
     }
 
     .hero {
-    display: flex;
-    justify-content: center; /* horizontal centering */
-    align-items: center;     /* vertical centering */
-    flex-direction: column;  /* ensures text stacks nicely if multiple lines */
-    text-align: center;      /* optional fallback */
+    text-align: center;
+    background-image: var(--backgroundimages);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 80%;  /* keeps the image scaled nicely */
+    border: 1px solid white;
+
+    /* new: control height */
+    height: 5rem;        /* set a fixed height for mobile */
+    max-height: 5rem;     /* optional: make sure it never exceeds half the screen */
+    overflow: hidden;     /* prevent background from overflowing */
+    border-radius: 50px;  /* optional: soft corners */
 }
 
 
-    .hero h1 {
-        text-align: center; /* ✅ center on phones */
-        font-size: rem;    /* optional: scale down font */
-    }
 
+    .hero h1 {
+        font-size: 3rem;    /* optional: scale down font */
+        color: var(--OngleEnchanteColor);
+    }
 
     .hero h2 {
         font-size: 1.2rem;
