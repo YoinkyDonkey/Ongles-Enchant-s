@@ -5,6 +5,14 @@ document.addEventListener('DOMContentLoaded', () => {
   const serviceCards = document.querySelectorAll('.service-card');
   const totalPriceEl = document.getElementById('total-price');
   const totalTimeEl = document.getElementById('total-time');
+  const infoIcons = document.querySelectorAll('.info-icon');
+
+  // ========================
+  // CREATE TOOLTIP ELEMENT
+  // ========================
+  const tooltip = document.createElement('div');
+  tooltip.className = 'info-tooltip';
+  document.body.appendChild(tooltip);
 
   // ========================
   // FUNCTION TO UPDATE TOTALS
@@ -27,7 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   // ========================
-  // CLICK EVENT TO TOGGLE SELECTION (ONE PER CATEGORY)
+  // SERVICE CARD CLICK (ONE PER CATEGORY)
   // ========================
   serviceCards.forEach(card => {
     card.addEventListener('click', () => {
@@ -49,21 +57,43 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // ========================
+  // INFO ICON CLICK (TOOLTIP)
+  // ========================
+  infoIcons.forEach(icon => {
+    icon.addEventListener('click', (e) => {
+      e.stopPropagation(); // prevent card selection
+
+      const infoText = icon.dataset.info || 'No additional info available.';
+      tooltip.textContent = infoText;
+
+      // Position tooltip below the icon
+      const rect = icon.getBoundingClientRect();
+      tooltip.style.top = `${rect.bottom + window.scrollY + 6}px`;
+      tooltip.style.left = `${rect.left + window.scrollX}px`;
+      tooltip.style.display = 'block';
+    });
+  });
+
+  // Hide tooltip when clicking anywhere else
+  document.addEventListener('click', () => {
+    tooltip.style.display = 'none';
+  });
+
+  // ========================
   // SCROLL-BASED BACKGROUND COLOR CHANGE
   // ========================
+  // const startColor = [76, 120, 95]; // dark green
+  // const endColor = [172, 147, 98];  // light beige
+
   window.addEventListener('scroll', () => {
     const scrollTop = window.scrollY;
     const docHeight = document.body.scrollHeight - window.innerHeight;
     const scrollPercent = scrollTop / docHeight;
-
-    const startColor = [105, 21, 46]; // dark red
-    const endColor = [172, 147, 98];  // light beige
 
     const r = Math.round(startColor[0] + (endColor[0] - startColor[0]) * scrollPercent);
     const g = Math.round(startColor[1] + (endColor[1] - startColor[1]) * scrollPercent);
     const b = Math.round(startColor[2] + (endColor[2] - startColor[2]) * scrollPercent);
 
     document.documentElement.style.setProperty('--backgroundcolor', `rgb(${r}, ${g}, ${b})`);
-
   });
 });

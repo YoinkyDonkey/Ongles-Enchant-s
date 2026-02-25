@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ongles Enchantés</title>
+    <title>Ongles Enchantés | Salon d’ongles et Spa Capillaire à LaSalle, Montréal</title>
     <link rel="icon" href="Photo/Icon and Logo/nice logo.jpg">
-    
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -35,14 +34,13 @@
 
 <!-- Side Navigation -->
 <nav class="side-nav">
-  <a href="#">Home</a>
-  <a href="#about">About</a>
+  <a href="#">Accueil</a>
+  <a href="#about">À propos</a>
   <a href="#service">Services</a>
-  <a href="#gallery">Gallerie</a>
+  <a href="#gallery">Galerie</a>
   <a href="#horaire">Horaire</a>
-  <a href="Rendez-vous/index.html">Rendez-vous</a>
-  
 </nav>
+
 
 <!-- Overlay (click to close) -->
 <label for="menu-toggle" class="overlay"></label>
@@ -97,7 +95,7 @@
     right: -260px;
     width: 260px;
     height: 100%;
-    background: var(--OngleEnchanteColor);
+    background: #9c4d4d;
     padding-top: 80px;
     transition: 0.4s ease;
     z-index: 1001;
@@ -128,7 +126,7 @@
   .overlay {
     position: fixed;
     inset: 0;
-    background: rgba(0,0,0,0.4);
+    background: rgba(0, 0, 0, 0.699);
     opacity: 0;
     visibility: hidden;
     transition: 0.4s;
@@ -161,16 +159,30 @@
 
     <!-- HEADER -->
     <header class="site-header" id="toppage">
-        <a href="index.html">
-        <h1 class="brand">Ongles Enchantés</h1>
+        <a href="index.html" class="brand">Ongles Enchantés</h1>>
         </a>
+        <script>
+  window.addEventListener("scroll", function() {
+    const header = document.querySelector(".site-header");
+
+    if (window.scrollY > 50) {  // triggers after 50px scroll
+      header.classList.add("scrolled");
+    } else {
+      header.classList.remove("scrolled");
+    }
+  });
+</script>
     </header>
+
+    <section class="image">
+      <img src="Photo/Nails/IMG_1180.JPG" alt="">
+    </section>
 
     <!-- HERO -->
     <section class="hero">
         <h1>A NEW ERA OF ME</h1>
-        <h2>Beauty Salon - Head Spa</h2>
-        <a href="Rendez-vous/index.html" class="btn primary">Prendre un rendez-vous</a>
+        <h2>Salon de beauté – Spa capillaire</h2>
+        <a href="#contact" class="btn primary">Prendre un rendez-vous</a>
     </section>
 
 
@@ -185,6 +197,8 @@
 <!-- SERVICES -->
 <section id="service">
   <h2 class="section-title" id="#service">Nos Services</h2>
+  <h3>++ = À partir de ... <br>
+  ♡ = Le plus réservé</h3>
 
   <div class="services-columns">
 
@@ -267,7 +281,12 @@
 
     <!-- Spa Capillair -->
     <div class="services-container">
-      <p class="category-title">Spa Capillair</p>
+      <p class="category-title">
+  <a href="#spa">Spa Capillaire</a>
+  <i class="info-icon" data-info="Un spa capillaire (souvent appelé Head Spa ou Hair Spa) est un soin de luxe en profondeur, inspiré des rituels japonais, combinant le soin du cuir chevelu et la relaxation" >&#9432;</i>
+</p>
+
+
       <div class="service-card" data-category="Spa Capillair" data-name="DeBase" data-duration="45" data-price="65">
         De Base<br>45 min · $65++
       </div>
@@ -286,24 +305,25 @@
     <!-- Total Section -->
     <div class="services-container">
       <div id="total-container">
-        Total: $<span id="total-price">0</span> · <span id="total-time">0</span> min
+        Total: (À partir de )$<span id="total-price">0</span> · <span id="total-time">0</span> min
         <h1>Veuillez noter que le montant total et le délai indiqués sont des estimations. Ils peuvent varier et ne sont pas définitifs.</h1>
-        <a href="Rendez-vous/index.html" target="_blank" class="btn outline">Prendre un rendez-vous</a>
+        <a href="#contact" target="_blank" class="btn outline">Prendre un rendez-vous</a>
       </div>
     </div>
   </div>
+  
 </section>
 
     <!-- GALLERY -->
     <section id="gallery">
         <h2 class="section-title">Notre Galerie</h2>
           <!-- Autoplay Video (Instagram Reel MP4 hosted) -->
-           <div class="hero-videos">
+           <div class="hero-videos" id="spa">
             <div class="video-container">
               <a href="https://www.instagram.com/reel/DGBTJn3RdBl/?utm_source=ig_web_copy_link" target="_blank" class="video-container">
               <video autoplay muted loop playsinline>
                 <source src="Photo/Spa/AQM1cLMohtLx1SLxDn3Apu719s1hr9WbjVmNWPZMHE1I91yxl9CT96psRJcv6fmw8PknLv7d1urFda7_ThnKnLgvFliYc38ZWAH5bGyuiw.mp4" type="video/mp4">
-                Your browser does not support the video tag.
+                Votre navigateur ne prend pas en charge la lecture de vidéos.
               </video>
               </a>
             </div>
@@ -311,7 +331,7 @@
               <a href="https://www.instagram.com/reel/DGJNAZ_xAMK/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="target="_blank" class="video-container">
               <video autoplay muted loop playsinline>
               <source src="Photo/Spa/AQP8UaAZ05DHMIJgrAiG8gXwJR7BtsSufoaOb-C7Z5j3SGQho_fO4nt0XJfAYYN27nhuf-RayblJivP8N02pUrGO_yQwM_p9HliuSocTMQ.mp4" type="video/mp4">
-                Your browser does not support the video tag.
+                Votre navigateur ne prend pas en charge la lecture de vidéos.
               </video>
               </a>
             </div>
@@ -369,11 +389,6 @@
         <h2 class="section-title">Contactez-nous</h2>
         <div class="contact-grid">
             <div class="contact-card">
-                <h3>Adresse</h3>
-                <p>7826 Bd Champlain, LaSalle, QC H8P 3V9</p>
-                <a href="https://maps.app.goo.gl/E9iszqnZpL5EeMMB7" target="_blank" class="btn outline">Voir sur Google Maps</a>
-            </div>
-            <div class="contact-card">
                 <h3>Téléphone</h3>
                 <p>(514) 595-5858</p>
                 <a href="tel:5145955858" target="_blank" class="btn outline">Appeler</a>
@@ -388,14 +403,30 @@
                 <h3>Galerie complète</h3>
                 <a href="Gallery/Gallery.html" target="_blank" class="btn outline">Gallerie</a>
             </div>
-            <div class="contact-card">
+            <!--<div class="contact-card">
                 <h3>Rendez-vous</h3>
                  <a href="Rendez-vous/index.html" target="_blank" class="btn outline">Prendre un rendez-vous</a>
 
 
-            </div>
+            </div>-->
+            
+
         </div>
     </section>
+   <section class="map-section">
+  <div class="map-card">
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2784.057686750646!2d-73.61099568445228!3d45.4274398791018!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4cc91acdcb2bfaaf%3A0x983967db59741b3a!2s7826%20Boulevard%20Champlain%2C%20Lasalle%2C%20QC%20H8P%203V9%2C%20Canada!5e0!3m2!1sen!2sca!4v1700000000000!5m2!1sen!2sca"
+      loading="lazy"
+      allowfullscreen
+      referrerpolicy="no-referrer-when-downgrade"
+    ></iframe>
+    <h2>Notre emplacement</h2>
+<p>Venez nous rendre visite à notre salon situé sur le boulevard Champlain, à LaSalle, Montréal.</p>
+<a href="https://maps.app.goo.gl/E9iszqnZpL5EeMMB7" target="_blank" class="btn outline">Voir sur Google Maps</a>
+  </div>
+</section>
+
 
     
     <section class="HeureOuverture1" id="horaire">
@@ -412,7 +443,8 @@
     <footer class="site-footer">
         <div class="seo-footer">
             <p>
-                Salon d’ongles à LaSalle, Montréal – manucure, pédicure et nail art professionnels.
+                Salon d’ongles à LaSalle, Montréal – manucure, pédicure, spa capillaire et nail art professionnels.
+
             </p>
         </div>
 
