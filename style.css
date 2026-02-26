@@ -31,7 +31,7 @@ body {
      background: linear-gradient(
     to bottom,
     var(--backgroundcolor) 0%,      /* top */
-    var(--backgroundcolor) 70%,     /* keep main color for longer */
+    var(--OngleEnchanteColor) 80%,     /* keep main color for longer */
     var(--OngleEnchanteColor) 100%                    /* fade to light beige at bottom */
   );
     color: var(--backgroundcolor);
@@ -88,7 +88,8 @@ a {
 /* This class will activate on scroll */
 .site-header.scrolled {
   backdrop-filter: blur(10px);
-  /*background-color: rgba(255, 255, 255, 0.3); /* optional but recommended */
+ background-color: rgba(94, 74, 74, 0.096); /* optional but recommended */
+ box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
 }
 
 .brand {
@@ -125,12 +126,7 @@ a {
     text-align: center;
     padding: 15rem 2rem;              /* vertical space for text */
     border-radius: 50px;              /* nice curved corners */
-    position: relative;
-    /*border: 2px solid var(--fontcolor); /* border around the hero 
-    background-image: var(--backgroundimages);*/
-    background-repeat: no-repeat;
-    background-size: 30%;           /* fills the entire hero */
-    background-position: center;      /* centers the image */
+    position: relative;    /* centers the image */
     overflow: hidden;                 /* keeps corners rounded inside border */
 
     margin: -6rem auto;                /* centers hero and adds horizontal spacing */
@@ -158,10 +154,8 @@ a {
   max-width: 900px;
   margin: 7rem auto;
   padding: 0 20px;
-  border: 1px solid var(--OngleEnchanteSecondColor);
   text-align: left;
   border-radius: 3rem;
-  box-shadow: 0 20px 40px rgba(216,180,106,0.4);
 }
 
 .about-section h2 {
@@ -171,9 +165,9 @@ a {
 }
 
 .about-section p {
-  font-size: 2rem;
+  font-size: 1.5rem;
   line-height: 1.7;
-  color: var(--OngleEnchanteSecondColor);
+  color: antiquewhite;
 }
 
 /* ========================
@@ -256,11 +250,12 @@ a {
 /* Individual Service Container */
 .services-container {
   flex: 1 1 250px;
-  background-color: #242222;
+  background-color: #2c252a38;
   border-radius: 12px;
   padding: 20px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid var(--fontcolor);
 }
 
 .services-container:hover {
@@ -280,13 +275,14 @@ a {
 
 /* Service Card Styling */
 .service-card {
-  background-color: #214120;
+  background-color: #3f183a46;
   border: 2px solid var(--fontcolor);
   margin: 10px 0;
   padding: 15px;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   border-radius: 8px;
   cursor: pointer;
+  color: antiquewhite;
   transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
@@ -297,11 +293,12 @@ a {
 
 .service-card br {
   line-height: 4;
+  color: black;
 }
 
 /* Total Container */
 #total-container {
-  background-color: #214120;
+  background-color: #191d195b;
   border: 2px solid var(--fontcolor);
   padding: 20px;
   border-radius: 12px;
@@ -360,10 +357,11 @@ a {
     position: relative;
     border-radius: 28px;
     overflow: hidden;
-    background: rgba(255,255,255,0.55);
+    background: rgba(255, 255, 255, 0);
     backdrop-filter: blur(25px) saturate(180%);
     box-shadow: 0 8px 30px rgba(0,0,0,0.06);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    
 }
 
 .video-container:hover {
@@ -616,245 +614,176 @@ a {
 
 .map-card h2 {
   margin-top: 30px;
-  font-size: 1.8rem;
+  font-size: 2rem;
   color: var(--fontcolor);
 }
 
 .map-card p {
   margin: 10px 0 25px;
-  color: var(--fontcolor);
+  color: antiquewhite;
   padding: 0 20px;
 }
 
 /* =========================
-   RESPONSIVE
+   MOBILE OPTIMIZATIONS
 ========================= */
-
 @media (max-width: 768px) {
+
+  /* ===== GENERAL BODY ===== */
+  body {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
   .section-title {
+  text-align: center;
+  font-size: 3rem;
+  margin-bottom: 40px;
+  color: var(--fontcolor);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+  /* ===== HEADER ===== */
+  .site-header {
+    padding: 8px 10px;
+  }
+
+  .brand {
+    font-size: 2rem;
+  }
+
+  /* ===== HERO SECTION ===== */
+  .hero {
+    padding: 10rem 1.5rem;
+    margin: -3rem auto;
+    border-radius: 20px;
+  }
+
+  .hero h1 {
+    font-size: 3rem;
+    letter-spacing: 0.05em;
+  }
+
+  .hero h2 {
     font-size: 1.8rem;
   }
 
-  .contact-card {
-    padding: 25px 20px;
+  /* ===== ABOUT SECTION ===== */
+  .about-section {
+    padding: 0 15px;
+    margin: 6rem auto;
   }
 
-  .map-card iframe {
-    height: 280px;
+  .about-section h2 {
+    font-size: 2rem;
   }
 
-  .map-card h2 {
-    font-size: 1.5rem;
+  .about-section p {
+    font-size: 1.2rem;
+    padding: 0 15px;
   }
-}
 
-
-/* ========================
-   HOURS
-======================== */
-.hours {
-    text-align: center;
-    padding: 3rem 1rem;
-}
-
-.hours ul {
-    list-style: none;
-    padding: 0;
-}
-
-.hours li {
-    margin-bottom: 0.8rem;
-}
-
-.HeureOuverture1 {
-    background: #18181d;
-    background-color: var(--background);
-    color: var(--fontcolor);
-    padding: 40px 30px;
-    border-radius: 2rem;
-    max-width: 500px;
-    margin: 2rem auto;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-    text-align: center;
-    font-family: 'Playfair Display', serif;
-    border: 1px solid var(--OngleEnchanteSecondColor);
-}
-
-.HeureOuverture1 h1 {
-    font-size: 36px;
-    margin-bottom: 25px;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    text-shadow: 2px 2px 5px rgba(0,0,0,0.15);
-}
-
-.hours-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.hours-list li {
-    display: flex;
-    justify-content: space-between;
-    padding: 12px 20px;
-    margin-bottom: 10px;
-    border-radius: 15px;
-    background-color: rgba(248, 193, 193, 0.1);
-    transition: background 0.3s;
-}
-
-.hours-list li:hover {
-    background-color: rgba(248, 193, 193, 0.2);
-}
-
-.hours-list .day {
-    font-weight: 600;
-    font-size: 18px;
-}
-
-.hours-list .time {
-    font-weight: 400;
-    font-size: 18px;
-}
-
-/* ========================
-   FOOTER
-======================== */
-.seo-footer {
-  text-align: center;
-  padding: 15px 10px;
-  font-size: 14px;
-  color: var(--background);
-}
-
-.seo-footer p {
-  margin: 0;
-}
-
-.site-footer {
-    text-align: center;
-    padding: 2rem;
-    opacity: 0.6;
-    display: block;
-    color: var(--background);
-}
-
-/* Floating social icons */
-.social-icons {
-    padding: 10px 1px;
-    position: fixed;
-    top: 50%;
-    right: 1%;
-    display: flex;
+  /* ===== SERVICES ===== */
+  .services-columns {
     flex-direction: column;
     gap: 15px;
-    z-index: 10000;
+  }
 
-    /* start hidden */
-    opacity: 0;
-    transform: translateY(-50%) translateY(30px);
+  .services-container {
+    padding: 15px;
+    flex: 1 1 100%;
+  }
 
-    /* scroll animation */
-    animation: social-appear linear both;
-    animation-timeline: scroll();
-    animation-range: 200px 1000px;
-}
+  .category-title {
+    font-size: 1.6rem;
+  }
 
-@keyframes social-appear {
-    to {
-        opacity: 1;
-        transform: translateY(50%) translateY(0);
-    }
-}
-.video-container {
-        flex: 1 1 100%; /* stack videos on mobile */
-    }
-.social-icons a.icon img {
-    width: 50px;
-    height: 50px;
-    transition: transform 0.3s ease, filter 0.3s ease;
-}
+  .service-card {
+    font-size: 1rem;
+    padding: 10px;
+  }
 
-.social-icons a.icon img:hover {
-    transform: scale(1.2);
-    filter: brightness(1.2);
-}
+  #total-container {
+    font-size: 1.6rem;
+    padding: 15px;
+  }
 
+  #total-container h1 {
+    font-size: 1.1rem;
+  }
 
-/* ========================
-   RESPONSIVE
-======================== */
-@media (max-width: 768px) {
-  .services-columns {
+  /* ===== HERO VIDEOS ===== */
+  .hero-videos {
+    flex-direction: column;
+    gap: 1.5rem;
+    margin: 2rem auto;
+  }
+
+  .video-container {
+    flex: 0 0 100%;
+    max-width: 100%;
+    height: 250px;
+  }
+
+  /* ===== GALLERY ===== */
+  .photo-gallery {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 1rem;
+  }
+
+  .photo {
+    border-radius: 15px;
+  }
+
+  /* ===== CONTACT ===== */
+  #contact {
+    padding: 40px 10px 30px;
+  }
+
+  .contact-grid {
     grid-template-columns: 1fr;
     gap: 20px;
   }
 
-  .service-card {
-    font-size: 1.6rem;
-  }
-
-  .category-title {
-    font-size: 1.8rem;
-  }
-
-  .menu-btn span {
-    display: block;
-    height: 4px;
-    background: var(--fontcolor);
-    margin: 5px 0;
-    transition: 0.4s;
-  }
-
-  .hero {
-    text-align: center;
-    padding: 1rem 2rem;              /* vertical space for text */
-    position: relative;
-    border: 2px solid var(--fontcolor); /* border around the hero */
-    background-repeat: no-repeat;
-    background-size: 130%;           /* fills the entire hero */
-    background-position: center;      /* centers the image */
-
-    max-width: 375px;                /* prevents hero from stretching full screen */
-    margin: 2rem auto;                /* centers hero and adds horizontal spacing */
-}
-
-  .hero h1 {
-    font-size: 4rem;
-  }
-
-  .hero h2 {
-    font-size: 2rem;
+  .contact-card {
+    padding: 20px;
   }
 
   .contact-card h3 {
-    font-size: 1.5rem;
+    font-size: 1.6rem;
   }
 
+  .contact-card p {
+    font-size: 1.1rem;
+  }
+
+  /* ===== MAP ===== */
+  .map-section {
+    padding: 40px 10px 50px;
+  }
+
+  .map-card h2 {
+    font-size: 1.8rem;
+  }
+
+  .map-card p {
+    font-size: 1.1rem;
+    padding: 0 10px;
+  }
+
+  .map-card iframe {
+    height: 250px;
+  }
+  .social-icons img {
+    width: 30px;       /* smaller width */
+    height: 30px;      /* smaller height */
+    margin: 0 5px;
+  }
+
+  /* ===== BUTTONS ===== */
   .btn {
-    padding: 0.6rem 1.8rem;
     font-size: 1.4rem;
+    padding: 0.6rem 1.8rem;
   }
-}
-
-@media (max-width: 480px) {
-  .photo-gallery {
-      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-  }
-.services-container {
-  padding: 16px;
-  background-color: var(--cardbg);
-  border-radius: 15px;
-  columns: 50px;
-}
-  .contact-grid {
-      grid-template-columns: 1fr;
-  }
-  .about-section h2 {
-  font-size: 2rem;
-}
-  .about-section p {
-  font-size: 1rem;
-}
 }
