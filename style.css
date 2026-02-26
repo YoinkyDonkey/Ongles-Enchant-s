@@ -31,11 +31,12 @@ body {
      background: linear-gradient(
     to bottom,
     var(--backgroundcolor) 0%,      /* top */
-    var(--OngleEnchanteColor) 80%,     /* keep main color for longer */
-    var(--OngleEnchanteColor) 100%                    /* fade to light beige at bottom */
+    #20202e 80%,     /* keep main color for longer */
+    #000000  100%                    /* fade to light beige at bottom */
   );
     color: var(--backgroundcolor);
     line-height: 1.6;
+    
 }
 
 /* ========================
@@ -178,6 +179,57 @@ a {
 .about-section img :hover {
     transform: translateY(102);
     }
+
+/* =========================
+   POLAROID IMAGE WALL
+========================= */
+
+.image1 {
+  display: flex;
+  justify-content: center;
+  gap: 60px;
+  flex-wrap: wrap;
+  margin: 100px auto;
+  padding: 40px 20px;
+
+}
+
+/* Each image becomes a polaroid */
+.image1 img {
+  background-color: white;
+  width: 280px;
+  max-width: 90%;
+
+  padding: 18px 18px 65px 18px; /* thick bottom */
+
+  border-radius: 4px;
+  box-shadow:
+    0 25px 45px rgba(0,0,0,0.18),
+    0 8px 15px rgba(0,0,0,0.08);
+
+  object-fit: cover;
+  display: block;
+
+  transition: all 0.4s ease;
+
+  /* subtle vintage */
+  filter: sepia(15%) contrast(105%) brightness(95%);
+}
+
+/* Slight natural tilt */
+.image1 img:nth-child(odd) {
+  transform: rotate(-4deg);
+}
+
+.image1 img:nth-child(even) {
+  transform: rotate(4deg);
+}
+
+/* Hover lift */
+.image1 img:hover {
+  transform: rotate(0deg) scale(1.07);
+  z-index: 10;
+}
 
 /* ========================
    SECTION TITLES
@@ -365,6 +417,19 @@ a {
   border: 1px solid #e6c078;
   box-shadow: 0 8px 25px rgba(0,0,0,0.2);
 }
+.services-container::before {
+  content: "";
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%) rotate(-2deg);
+  width: 80px;
+  height: 25px;
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(2px);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  border-radius: 3px;
+}
 
 /* Responsive Adjustments */
 @media (max-width: 992px) {
@@ -434,7 +499,19 @@ a {
   color: #000000;
   text-align: center;
 }
-
+.video-container::before {
+  content: "";
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%) rotate(-2deg);
+  width: 80px;
+  height: 25px;
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(2px);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  border-radius: 3px;
+}
 /* ========================
    GALLERY
 ======================== */
@@ -460,7 +537,7 @@ a {
 
 /* Polaroid card */
 .photo {
-    background: #f3dcdc;
+    background: #ffffff;
     padding: 15px 15px 50px 15px; /* extra bottom space for caption */
     width: 180px;
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.527);
@@ -512,6 +589,19 @@ a {
     font-size: 0.9rem;
     color: #555;
     text-align: center;
+}
+.photo::after {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 14px;
+  height: 14px;
+  background: radial-gradient(circle at 30% 30%, #ff6b6b, #c0392b);
+  border-radius: 50%;
+  box-shadow:
+    0 3px 6px rgba(0,0,0,0.3);
 }
 
 /* ========================
@@ -681,7 +771,19 @@ a {
   box-shadow: 0 10px 25px rgba(212, 163, 115, 0.4);
   transform: translateY(-2px);
 }
-
+.contact-card::after {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 14px;
+  height: 14px;
+  background: radial-gradient(circle at 30% 30%, #ff6b6b, #c0392b);
+  border-radius: 50%;
+  box-shadow:
+    0 3px 6px rgba(0,0,0,0.3);
+}
 
 /* =========================
    MAP POLAROID STYLE
@@ -765,7 +867,19 @@ a {
   color: #555;
   text-align: center;
 }
-
+.map-card::after {
+  content: "";
+  position: absolute;
+  top: 1px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 14px;
+  height: 14px;
+  background: radial-gradient(circle at 30% 30%, #ff6b6b, #c0392b);
+  border-radius: 50%;
+  box-shadow:
+    0 3px 6px rgba(0,0,0,0.3);
+}
 /* ========================
    HOURS
 ======================== */
@@ -856,187 +970,298 @@ a {
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* =========================
    MOBILE OPTIMIZATIONS
 ========================= */
 @media (max-width: 768px) {
 
-  /* ===== GENERAL BODY ===== */
-  body {
-    font-size: 1rem;
-    line-height: 1.5;
-  }
-
-  .section-title {
-  text-align: center;
+    .section-title {
   font-size: 3rem;
-  margin-bottom: 40px;
-  color: var(--fontcolor);
-  text-transform: uppercase;
-  letter-spacing: 2px;
+  
 }
-
-  /* ===== HEADER ===== */
-  .site-header {
-    padding: 8px 10px;
-  }
-
-  .brand {
-    font-size: 2rem;
-  }
-
-  /* ===== HERO SECTION ===== */
+  
+  /* ===== Hero Section ===== */
   .hero {
-    padding: 10rem 1.5rem;
+    padding: 8rem 1.5rem;
     margin: -3rem auto;
-    border-radius: 20px;
+    border-radius: 2rem;
   }
-
+  
   .hero h1 {
     font-size: 3rem;
-    letter-spacing: 0.05em;
+    line-height: 1.2;
   }
-
+  
   .hero h2 {
-    font-size: 1.8rem;
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
   }
-
-  /* ===== ABOUT SECTION ===== */
+  
+  /* ===== About Section ===== */
   .about-section {
-    padding: 0 15px;
-    margin: 6rem auto;
+    padding: 0 20px;
+    margin: 5rem auto;
+    text-align: center;
   }
-
+  
   .about-section h2 {
     font-size: 2rem;
   }
-
+  
   .about-section p {
     font-size: 1.2rem;
-    padding: 0 15px;
   }
-
-  /* ===== SERVICES ===== */
+  
+  .about-section img {
+    width: 70%;
+    height: auto;
+    margin: 1.5rem auto;
+  }
+  
+  /* ===== Services / Polaroids ===== */
   .services-columns {
     flex-direction: column;
-    gap: 15px;
+    gap: 20px;
+    align-items: center;
   }
 
   .services-container {
+    width: 90%;
+    transform: rotate(0deg); /* remove rotation for mobile */
     padding: 15px;
-    flex: 1 1 100%;
   }
-
+  
   .category-title {
-    font-size: 1.6rem;
+    font-size: 1.5rem;
   }
-
+  
   .service-card {
     font-size: 1rem;
     padding: 10px;
   }
-
+  
   #total-container {
-    font-size: 1.6rem;
-    padding: 15px;
+    width: 95%;
+    font-size: 1.2rem;
   }
-
-  #total-container h1 {
-    font-size: 1.1rem;
-  }
-
-  /* ===== HERO VIDEOS ===== */
+  
+  /* ===== Hero Videos ===== */
+  
   .hero-videos {
     flex-direction: column;
-    gap: 1.5rem;
-    margin: 2rem auto;
-  }
-
-  .video-container {
-    flex: 0 0 100%;
-    max-width: 100%;
-    height: 250px;
-  }
-
-  /* ===== GALLERY ===== */
-  .photo-gallery {
-    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-    gap: 1rem;
-  }
-
-  .photo {
-    border-radius: 15px;
-  }
-
-  /* ===== CONTACT ===== */
-  #contact {
-    padding: 40px 10px 30px;
-  }
-
-  .contact-grid {
-    grid-template-columns: 1fr;
     gap: 20px;
   }
-
+  
+  .video-container {
+    width: 90%;
+    transform: rotate(0deg);
+  }
+  
+  .polaroid-caption {
+    font-size: 1.5rem;
+  }
+  
+  
+  /* ===== Photo Gallery ===== */
+  .photo-gallery {
+    gap: 15px;
+  }
+  
+  .photo {
+    width: 90%;
+    transform: rotate(0deg);
+  }
+  
+  .photo .caption {
+    font-size: 0.8rem;
+  }
+  
+  /* ===== Contact Cards ===== */
   .contact-card {
-    padding: 20px;
+    width: 90%;
+    transform: rotate(0deg);
+    padding: 20px 15px 40px;
   }
-
+  
   .contact-card h3 {
-    font-size: 1.6rem;
+    font-size: 2rem;
   }
-
+  
   .contact-card p {
-    font-size: 1.1rem;
+    font-size: 1rem;
   }
-
-  /* ===== MAP ===== */
-  .map-section {
-    padding: 40px 10px 50px;
+  
+  .btn.outline {
+    padding: 10px 20px;
+    font-size: 0.9rem;
   }
-
+  
+  /* ===== Map Section ===== */
+  .map-card {
+    width: 95%;
+    padding: 40px 15px 60px;
+    transform: rotate(0deg);
+  }
+  
   .map-card h2 {
-    font-size: 1.8rem;
+    font-size: 2rem;
   }
-
+  
   .map-card p {
-    font-size: 1.1rem;
-    padding: 0 10px;
+    font-size: 1rem;
   }
-
+  
   .map-card iframe {
     height: 250px;
   }
-  .social-icons img {
-    width: 30px;       /* smaller width */
-    height: 30px;      /* smaller height */
-    margin: 0 5px;
+  
+  /* ===== Hours Section ===== */
+  .HeureOuverture1 {
+    width: 90%;
+    padding: 30px 20px;
   }
-
-  /* ===== BUTTONS ===== */
-  .btn {
-    font-size: 1.4rem;
-    padding: 0.6rem 1.8rem;
+  
+  .HeureOuverture1 h1 {
+    font-size: 28px;
+    margin-bottom: 20px;
   }
-}
-/* =========================
-   MOBILE FOOTER
-========================= */
-@media (max-width: 768px) {
-
+  
+  .hours-list .day,
+  .hours-list .time {
+    font-size: 16px;
+  }
+  
+  /* ===== Footer ===== */
   .site-footer {
     padding: 40px 15px 20px;
   }
-
+  
   .seo-footer {
-    font-size: 1rem;
+    font-size: 0.9rem;
+  }
+  /* =========================
+   HERO VIDEOS - RESPONSIVE
+========================= */
+/* ========================= 
+   POLAROID VIDEO SECTION
+========================= */
+
+.hero-videos {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+  flex-wrap: wrap;
+  margin-bottom: 80px;
+  padding: 40px 20px;
+}
+
+/* Polaroid card */
+.video-container {
+  background: #fff;
+  padding: 18px 18px 70px 18px;
+  width: 260px;
+  border-radius: 4px;
+  position: relative;
+  transform-origin: center;
+  transition: all 0.4s ease;
+  box-shadow:
+    0 25px 45px rgba(0,0,0,0.2),
+    0 8px 15px rgba(0,0,0,0.1);
+}
+
+/* Desktop tilt only */
+@media (min-width: 769px) {
+  .video-container:nth-child(odd) {
+    transform: rotate(-4deg);
   }
 
-  .site-footer .brand {
-    font-size: 2rem;
+  .video-container:nth-child(even) {
+    transform: rotate(4deg);
+  }
+}
+
+/* Hover */
+.video-container:hover {
+  transform: rotate(0deg) scale(1.05);
+  box-shadow: 
+    0 30px 60px rgba(0, 0, 0, 0.25),
+    0 10px 20px rgba(0, 0, 0, 0.15);
+  z-index: 3;
+}
+
+/* Video */
+.video-container video {
+  width: 100%;
+  aspect-ratio: 9 / 16;
+  object-fit: cover;
+  display: block;
+  border-radius: 2px;
+}
+
+/* Tape */
+.video-container::before {
+  content: "";
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 25px;
+  background: rgba(255, 230, 180, 0.75);
+  border-radius: 3px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Caption */
+.polaroid-caption {
+  position: absolute;
+  bottom: 18px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-size: 0.95rem;
+  color: #555;
+}
+
+/* ========================= 
+   MOBILE FIX
+========================= */
+
+@media (max-width: 768px) {
+
+  .hero-videos {
+    flex-direction: column;
+    align-items: center;
+    gap: 70px;
   }
 
-  .site-footer p:last-child {
-    font-size: 0.85rem;
+  .video-container {
+    width: 90%;
+    max-width: 320px;
+    transform: none;   /* remove tilt */
   }
+
+  .video-container:hover {
+    transform: scale(1.03);
+  }
+}
 }
