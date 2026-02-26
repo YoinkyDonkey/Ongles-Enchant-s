@@ -6,7 +6,7 @@
     --backgroundcolor: rgb(76, 120, 95); 
     --OngleEnchanteColor: rgb(105, 21, 46);  
     --OngleEnchanteSecondColor: rgb(248, 193, 193);  
-    --fontcolor: #d8b36ade;        
+    --fontcolor: #ffc68d;        
     --textcolor: #f5f5f5;        
     --cardbg: #18181d;           
     --gradient: linear-gradient(135deg, #d8b46a, #f2d488); 
@@ -169,6 +169,15 @@ a {
   line-height: 1.7;
   color: antiquewhite;
 }
+.about-section img {
+    width:40%;
+    height: 20%;
+    transition: transform 0.5s ease;
+}
+
+.about-section img :hover {
+    transform: translateY(102);
+    }
 
 /* ========================
    SECTION TITLES
@@ -179,6 +188,11 @@ a {
   align-items: center;
   gap: 5px; /* space between text and icon */
   font-weight: bold;
+  text-shadow:
+     -1px -1px 0 #000000,
+      1px -1px 0 #33333346,
+     -1px  1px 0 #33333346,
+      1px  1px 0 #333; /* 4-way shadow for border effect */
 }
 
 .info-icon {
@@ -219,15 +233,13 @@ a {
 
 
 /* ========================
-   SERVICES SECTION
+   SERVICES POLAROID STYLE
 ======================== */
-
-/* General Section Styling */
 #service {
   padding: 60px 20px;
   font-family: 'Playfair Display', serif;
   color: var(--fontcolor);
-  
+  /* background: #fdfbf917; /* soft polaroid background */
 }
 
 .section-title {
@@ -237,9 +249,10 @@ a {
   color: var(--fontcolor);
   text-transform: uppercase;
   letter-spacing: 2px;
+  
 }
 
-/* Services Columns */
+/* Services Columns - Flex layout for polaroids */
 .services-columns {
   display: flex;
   flex-wrap: wrap;
@@ -247,64 +260,87 @@ a {
   justify-content: center;
 }
 
-/* Individual Service Container */
+/* Polaroid-style Service Container */
 .services-container {
   flex: 1 1 250px;
-  background-color: #2c252a38;
-  border-radius: 12px;
-  padding: 20px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  border: 1px solid var(--fontcolor);
+  background-color: #374732;
+  border-radius: 6px;
+  padding: 20px 20px 50px 20px; /* extra bottom space like polaroid */
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform-origin: bottom center;
+  border: 1px solid black;
+  position: relative;
 }
 
+/* Slight rotation for realism */
+.services-container:nth-child(odd) {
+  transform: rotate(-1deg);
+}
+.services-container:nth-child(even) {
+  transform: rotate(1deg);
+}
+
+/* Hover lift effect */
 .services-container:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+  transform: rotate(0deg) scale(1.05);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+  z-index: 2;
 }
 
 /* Category Title */
 .category-title {
   font-weight: bold;
-  font-size: 2rem;
+  font-size: 2.2rem;
   margin-bottom: 15px;
   color: var(--fontcolor);
   border-bottom: 2px solid var(--fontcolor);
   padding-bottom: 5px;
+  text-align: center;
+  text-shadow:
+     -1px -1px 0 #000000,
+      1px -1px 0 #33333346,
+     -1px  1px 0 #33333346,
+      1px  1px 0 #333; /* 4-way shadow for border effect */
 }
 
 /* Service Card Styling */
 .service-card {
-  background-color: #3f183a46;
-  border: 2px solid var(--fontcolor);
+  background-color: #ac4141;
+  border: 1px solid black;
   margin: 10px 0;
   padding: 15px;
   font-size: 1.2rem;
-  border-radius: 8px;
+  border-radius: 6px;
   cursor: pointer;
-  color: antiquewhite;
-  transition: background-color 0.3s ease, transform 0.2s ease;
+  color: #ffffff;
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  text-align: center;
 }
 
 .service-card:hover {
-  background-color: #862c22;
-  transform: translateX(5px);
+  background-color: #e94646;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
 }
 
-.service-card br {
-  line-height: 4;
-  color: black;
-}
-
-/* Total Container */
+/* Total Container as polaroid */
 #total-container {
-  background-color: #191d195b;
-  border: 2px solid var(--fontcolor);
-  padding: 20px;
-  border-radius: 12px;
+  background-color: #4b4040;
+  border: 1px solid #000000;
+  padding: 20px 20px 50px 20px;
+  border-radius: 6px;
   text-align: center;
   font-size: 2rem;
   margin-top: 20px;
+  box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+  transform-origin: bottom center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 #total-container h1 {
@@ -313,22 +349,21 @@ a {
   margin-top: 10px;
 }
 
-
-/* Click / Pressed Effect */
+/* Button pressed effect inside polaroid */
 #total-container .btn.outline:active {
-  transform: scale(0.95); /* Shrink slightly when clicked */
-  box-shadow: inset 0 3px 5px rgba(0,0,0,0.2); /* Inner shadow for pressed effect */
+  transform: scale(0.95);
+  box-shadow: inset 0 3px 5px rgba(0,0,0,0.2);
   transition: transform 0.1s ease, box-shadow 0.1s ease;
 }
 
 /* Selected Service Card */
 .service-card.selected {
-  background-color: var(--fontcolor); /* Highlight color when selected */
+  background-color: #ffd8a8;
   font-weight: bold;
-  color: var(--backgroundcolor);               /* Text color for contrast */
-  transform: translateX(5px); /* Optional slight shift to indicate selection */
-  border: 1px solid var(--backgroundcolor);
-  box-shadow: 0 4px 15px rgba(0,0,0,0.2); /* Optional shadow for emphasis */
+  color: #333;
+  transform: translateY(-3px);
+  border: 1px solid #e6c078;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.2);
 }
 
 /* Responsive Adjustments */
@@ -341,41 +376,65 @@ a {
 
 /* ================= HERO VIDEOS STYLING ================= */
 
+/* ===== VIDEO AREA - POLAROID STYLE ===== */
 .hero-videos {
-    display: flex;
-    gap: 2rem; /* more space between videos */
-    justify-content: center;
-    flex-wrap: wrap;
-    max-width: 1000px; /* limit overall width */
-    margin: 3rem auto;
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+  margin-bottom: 80px;
 }
 
+/* Polaroid Card */
 .video-container {
-    flex: 0 0 45%; /* each video takes 45% of the container width */
-    max-width: 480px; /* max width for bigger screens */
-    height: 480px; /* smaller fixed height */
-    position: relative;
-    border-radius: 28px;
-    overflow: hidden;
-    background: rgba(255, 255, 255, 0);
-    backdrop-filter: blur(25px) saturate(180%);
-    box-shadow: 0 8px 30px rgba(0,0,0,0.06);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    
+  background: #ffffff;
+  padding: 15px 15px 15px 15px; /* remove extra bottom padding for caption */
+  width: 240px;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: all 0.4s ease;
+  transform-origin: bottom center;
 }
 
-.video-container:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 40px rgba(0,0,0,0.08);
+/* Random slight rotation for realistic effect */
+.video-container:nth-child(1) {
+  transform: rotate(-2deg);
+  border: 1px solid black;
 }
 
+.video-container:nth-child(2) {
+  transform: rotate(2deg);
+  border: 1px solid black;
+}
+
+/* Video inside polaroid */
 .video-container video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* covers the smaller container perfectly */
-    display: block;
-    border-radius: 28px;
+  width: 100%;
+  aspect-ratio: 9 / 16;
+  object-fit: cover;
+  display: block;
+  border-radius: 3px;
+  border: 1px solid black;
 }
+
+/* Hover effect */
+.video-container:hover {
+  transform: rotate(0deg) scale(1.05);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+  z-index: 2;
+}
+
+.polaroid-caption {
+  margin-top: 12px;
+  font-family: "Dancing Script", solid;
+  font-size: 2rem;
+  color: #000000;
+  text-align: center;
+}
+
 /* ========================
    GALLERY
 ======================== */
@@ -390,46 +449,69 @@ a {
 }
 
 .photo-gallery {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-    gap: 1.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
     max-width: 1200px;
     margin: auto;
     padding: 0 1rem;
 }
 
+/* Polaroid card */
 .photo {
-    border-radius: 2rem;
-    overflow: hidden;
-    background: var(--cardbg);
-    box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+    background: #f3dcdc;
+    padding: 15px 15px 50px 15px; /* extra bottom space for caption */
+    width: 180px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.527);
+    border-radius: 6px;
     position: relative;
-    transition: transform 0.5s ease, box-shadow 0.5s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    transform-origin: bottom center;
 }
 
+/* Slight rotation for fun polaroid effect */
+.photo:nth-child(odd) {
+    transform: rotate(-2deg);
+    border: 1px solid black;
+}
+.photo:nth-child(even) {
+    transform: rotate(2deg);
+    border: 1px solid black;
+}
+
+/* Photo image inside polaroid */
 .photo img {
     width: 100%;
-    height: 100%;
+    height: auto;
+    border-radius: 3px;
     object-fit: cover;
+    display: block;
     transition: transform 0.5s ease;
+    border: 1px solid black;
 }
 
 .photo:hover img {
     transform: scale(1.08);
 }
 
-.photo::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    border-radius: inherit;
-    border: 1px solid transparent;
-    transition: border 0.4s ease, box-shadow 0.4s ease;
+/* Hover effect for polaroid card */
+.photo:hover {
+    transform: rotate(0deg) scale(1.05);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+    z-index: 2;
 }
 
-.photo:hover::before {
-    border-color: var(--gradient);
-    box-shadow: 0 0 35px rgba(216,180,106,0.35);
+/* Optional caption under photo */
+.photo .caption {
+    margin-top: 12px;
+    font-family: 'Cursive', sans-serif;
+    font-size: 0.9rem;
+    color: #555;
+    text-align: center;
 }
 
 /* ========================
@@ -442,6 +524,7 @@ a {
     pointer-events: none;
     z-index: 9999;
     transition: opacity 0.3s ease;
+    background: rgba(15,15,18,0.92);
 }
 
 .lightbox:target {
@@ -495,72 +578,97 @@ a {
 }
 
 /* ========================
-   CONTACT
+   CONTACT POLAROID STYLE
 ======================== */
-/* =========================
-   CONTACT SECTION
-========================= */
-
 #contact {
-  padding: 80px 20px 60px;;
+  padding: 80px 20px 60px;
   text-align: center;
 }
 
+/* Section title accent line remains elegant */
 .section-title::after {
   content: "";
   width: 60px;
   height: 3px;
-  background-color: #d4a373; /* soft elegant accent */
+  background-color: #d4a373;
   display: block;
   margin: 15px auto 0;
   border-radius: 3px;
 }
 
-/* Grid Layout */
+/* Contact grid layout */
 .contact-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 30px;
   max-width: 1100px;
   margin: 0 auto;
+  
 }
 
-/* Cards */
+/* Polaroid-style cards */
 .contact-card {
-  background: #2e2a2a;
-  padding: 35px 25px;
-  border-radius: 14px;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
-  transition: all 0.35s ease;
-  border: 1px solid var(--fontcolor);
+  background: #574040;
+  padding: 25px 20px 50px 20px; /* extra bottom space like polaroid */
+  width: 280px;
+  border-radius: 6px;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform-origin: bottom center;
+  position: relative;
 }
 
+/* Slight random rotation for realistic polaroid feel */
+.contact-card:nth-child(odd) {
+  transform: rotate(-2deg);
+  border: 1px solid black;
+}
+.contact-card:nth-child(even) {
+  transform: rotate(2deg);
+  border: 1px solid black;
+}
+
+/* Hover effect */
 .contact-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+  transform: rotate(0deg) scale(1.05);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.39);
+  z-index: 2;
 }
 
+/* Card heading & text */
 .contact-card h3 {
-  font-size: 2rem;
+  font-size: 2.5rem;
   margin-bottom: 15px;
-  color: #d4a373; /* elegant warm tone */
+  color: #ffc68d;
+  font-weight: 700;
+  text-align: center;
+  text-shadow:
+     -1px -1px 0 #000000,
+      1px -1px 0 #33333346,
+     -1px  1px 0 #33333346,
+      1px  1px 0 #333; /* 4-way shadow for border effect */
 }
 
 .contact-card p {
+  font-size: 1.2rem;
+  color: #ffc68d;
   margin-bottom: 12px;
-  color: var(--fontcolor);
-  font-size: 1.5rem;
+  text-align: center;
 }
 
-/* Buttons */
+/* Buttons inside polaroid card */
 .btn.outline {
   display: inline-block;
   padding: 12px 26px;
   border-radius: 40px;
-  border: 1px solid rgba(212, 163, 115, 0.4);
+  border: 1px solid rgb(212, 163, 115);
   background: rgba(212, 163, 115, 0.1);
   backdrop-filter: blur(6px);
-  color: #d4a373;
+  color: #ffc68d;
   font-weight: 600;
   font-size: 1rem;
   text-decoration: none;
@@ -576,53 +684,177 @@ a {
 
 
 /* =========================
-   MAP SECTION
+   MAP POLAROID STYLE
 ========================= */
-
 .map-section {
   padding: 60px 20px 80px;
   display: flex;
   justify-content: center;
+  
 }
 
+/* Polaroid-style card */
 .map-card {
-  max-width: 1100px;
+  max-width: 900px;
   width: 100%;
-  background: #332828;
-  border-radius: 16px;
+  background: #352626;
+  border-radius: 6px;
   overflow: hidden;
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.445);
   text-align: center;
-  transition: all 0.3s ease;
-  border: 2px solid var(--fontcolor);
-
-  padding-bottom: 40px; /* 👈 adds space under button */
+  transition: all 0.35s ease;
+  padding: 60px 20px 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform-origin: bottom center;
+  position: relative;
+  border: 1px solid black;
 }
 
+/* Slight rotation for realism */
+.map-card:nth-child(odd) {
+  transform: rotate(-2deg);
+}
+.map-card:nth-child(even) {
+  transform: rotate(2deg);
+}
 
+/* Hover effect */
 .map-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
+  transform: rotate(0deg) scale(1.03);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+  z-index: 2;
 }
 
+/* Map iframe inside polaroid */
 .map-card iframe {
   width: 100%;
   height: 400px;
   border: none;
   display: block;
+  border-radius: 4px; /* soft corners inside polaroid */
+  border: 1px solid black;
 }
 
+/* Heading & text */
 .map-card h2 {
-  margin-top: 30px;
-  font-size: 2rem;
-  color: var(--fontcolor);
+  margin-top: 20px;
+  font-size: 2.5rem;
+  color: #d4a373; /* elegant warm tone */
+  text-shadow:
+     -1px -1px 0 #000000,
+      1px -1px 0 #33333346,
+     -1px  1px 0 #33333346,
+      1px  1px 0 #333; /* 4-way shadow for border effect */
 }
 
 .map-card p {
   margin: 10px 0 25px;
-  color: antiquewhite;
+  color: #ffc68d;
+  font-size: 1.2rem;
   padding: 0 20px;
+  text-align: center;
 }
+
+/* Optional caption at the bottom */
+.map-card .caption {
+  margin-top: 10px;
+  font-family: 'Cursive', sans-serif;
+  font-size: 0.9rem;
+  color: #555;
+  text-align: center;
+}
+
+/* ========================
+   HOURS
+======================== */
+.hours {
+    text-align: center;
+    padding: 3rem 1rem;
+}
+
+.hours ul {
+    list-style: none;
+    padding: 0;
+}
+
+.hours li {
+    margin-bottom: 0.8rem;
+}
+
+.HeureOuverture1 {
+    background-color: var(--background);
+    color: var(--fontcolor);
+    padding: 40px 30px;
+    border-radius: 2rem;
+    max-width: 500px;
+    margin: 2rem auto;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    text-align: center;
+    font-family: 'Playfair Display', serif;
+    border: 1px solid var(--OngleEnchanteSecondColor);
+}
+
+.HeureOuverture1 h1 {
+    font-size: 36px;
+    margin-bottom: 25px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.15);
+}
+
+.hours-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.hours-list li {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 20px;
+    margin-bottom: 10px;
+    border-radius: 15px;
+    background-color: rgba(248, 193, 193, 0.1);
+    transition: background 0.3s;
+}
+
+.hours-list li:hover {
+    background-color: rgba(248, 193, 193, 0.2);
+}
+
+.hours-list .day {
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.hours-list .time {
+    font-weight: 400;
+    font-size: 18px;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+.site-footer {
+  padding: 60px 20px 30px;
+  text-align: center;
+  color: antiquewhite;
+  position: relative;
+}
+
+
+/* SEO Text */
+.seo-footer {
+  max-width: 800px;
+  margin: 0 auto 30px;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--fontcolor);
+}
+
 
 /* =========================
    MOBILE OPTIMIZATIONS
@@ -785,5 +1017,26 @@ a {
   .btn {
     font-size: 1.4rem;
     padding: 0.6rem 1.8rem;
+  }
+}
+/* =========================
+   MOBILE FOOTER
+========================= */
+@media (max-width: 768px) {
+
+  .site-footer {
+    padding: 40px 15px 20px;
+  }
+
+  .seo-footer {
+    font-size: 1rem;
+  }
+
+  .site-footer .brand {
+    font-size: 2rem;
+  }
+
+  .site-footer p:last-child {
+    font-size: 0.85rem;
   }
 }
