@@ -1,16 +1,82 @@
 :root {
-    --background: #0f0f12;       /* dark background */
-    --backgroundcolor: rgb(48, 31, 31); 
+    --background: #0f0f12;       
+    --backgroundcolor: rgb(76, 120, 95); 
     --OngleEnchanteColor: rgb(105, 21, 46);  
     --OngleEnchanteSecondColor: rgb(248, 193, 193);  
-    --fontcolor: #d8b36ade;        /* gold accent */
-    --textcolor: #f5f5f5;        /* main text */
-    --cardbg: #18181d;           /* dark panel background */
-    --gradient: linear-gradient(135deg, #d8b46a, #f2d488); /* subtle gold gradient */
-    --backgroundimages:url(Photo/Nails/IMG_9522.JPG) ;
+    --fontcolor: #ffc68d;        
+    --textcolor: #f5f5f5;        
+    --cardbg: #18181d;           
+    --gradient: linear-gradient(135deg, #d8b46a, #f2d488); 
+    --backgroundimages:url(../Photo/Nails/IMG_9522.JPG);
 }
 
+/* ========================
+   RESET
+======================== */
 
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Playfair Display", serif;
+     background: linear-gradient(
+    to bottom,
+    var(--backgroundcolor) 0%,      /* top */
+    #20202e 80%,     /* keep main color for longer */
+    #000000  100%                    /* fade to light beige at bottom */
+  );
+    color: var(--backgroundcolor);
+    line-height: 1.6;
+    
+}
+
+/* ========================
+   LINKS & BUTTONS
+======================== */
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.btn {
+    display: inline-block;
+    padding: 0.8rem 2.4rem;
+    border-radius: 3rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    text-align: center;
+    font-size: 2rem;
+}
+
+.btn.primary {
+    background: var(--gradient);
+    color: var(--OngleEnchanteColor);
+    box-shadow: 0 5px 20px rgba(216,180,106,0.4);
+}
+
+.btn.outline {
+    background: transparent;
+    border: 1px solid var(--fontcolor);
+    color: var(--fontcolor);
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(216,180,106,0.5);
+}
+
+/* ========================
+   HEADER
+======================== */
+.site-header {
+  padding: 10px;
+  text-align: center;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  transition: backdrop-filter 0.3s ease;
+}
 
 /* SECTION STYLING */
 #mosaic-gallery {
@@ -113,6 +179,204 @@
 .lightbox .prev { left: 20px; }
 .lightbox .next { right: 20px; }
 
+/* =========================
+   CTA SECTION
+========================= */
+
+.cta-section {
+  background: #19173b; /* beige vintage */
+  padding: 120px 20px 80px;
+  text-align: center;
+  font-family: "Playfair Display", serif;
+  color: #3e2f2f;
+}
+
+.cta-container {
+  max-width: 800px;
+  margin: 0 auto 100px;
+  background: #ffffff;
+  padding: 60px 40px 80px;
+  box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+  border-radius: 8px;
+  position: relative;
+  transform: rotate(-1deg);
+  border: 1px solid black;
+}
+/* Petite "punaise" décorative */
+.cta-container::before {
+  content: "";
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 22px;
+  height: 22px;
+  background: radial-gradient(circle at 30% 30%, #d96b6b, #9e2f2f);
+  border-radius: 50%;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.25);
+}
+
+.cta-small {
+  font-size: 1rem;
+  letter-spacing: 3px;
+  color: #b76e79; /* vieux rose */
+  margin-bottom: 20px;
+}
+
+.cta-section h1 {
+  font-size: 3.8rem;
+  font-weight: 500;
+  margin-bottom: 25px;
+}
+
+.cta-subtext {
+  font-size: 1.1rem;
+  color: #6b4f4f;
+  margin-bottom: 40px;
+  line-height: 1.7;
+}
+
+/* Bouton rétro */
+.cta-btn {
+  display: inline-block;
+  padding: 16px 45px;
+  background: #57242c;
+  color: white;
+  border-radius: 50px;
+  text-decoration: none;
+  font-size: 1rem;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 20px rgba(183,110,121,0.4);
+}
+
+.cta-btn:hover {
+  background: #a05863;
+  transform: translateY(-4px);
+}
+
+/* =========================
+   FOOTER - POLAROID GRID
+========================= */
+
+.footer {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 50px;
+}
+
+/* Cartes polaroid */
+.footer-col {
+  background: #ffffff;
+  width: 300px;
+  padding: 30px 25px 50px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+  border-radius: 6px;
+  position: relative;
+  text-align: center;
+  transition: 0.4s ease;
+}
+
+.footer-col:nth-child(odd) {
+  transform: rotate(-2deg);
+}
+
+.footer-col:nth-child(even) {
+  transform: rotate(2deg);
+}
+
+.footer-col:hover {
+  transform: rotate(0deg) scale(1.05);
+  box-shadow: 0 35px 70px rgba(0,0,0,0.25);
+}
+
+.footer-col h3 {
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+}
+
+.footer-col h4 {
+  font-size: 0.9rem;
+  letter-spacing: 2px;
+  margin-bottom: 20px;
+  color: #b76e79;
+}
+
+.footer-col p,
+.footer-col li {
+  font-size: 0.95rem;
+  color: #6b4f4f;
+  line-height: 1.6;
+}
+
+.footer-col ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-col ul li {
+  margin-bottom: 10px;
+}
+
+.footer-col a {
+  text-decoration: none;
+  color: #6b4f4f;
+  transition: 0.3s;
+}
+
+.footer-col a:hover {
+  color: #b76e79;
+}
+
+/* Bas du footer */
+.footer-bottom {
+  margin-top: 80px;
+  text-align: center;
+  font-size: 0.8rem;
+  color: #7a5c5c;
+}
+/* =========================
+   SIDE BY SIDE LAYOUT
+========================= */
+
+.end {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  gap: 60px;              /* space between the two sections */
+  padding: 80px 40px;
+  flex-wrap: wrap;        /* allows stacking on small screens */
+}
+
+/* Make both sections same width */
+.HeureOuverture1,
+.map-section {
+  flex: 1;
+  max-width: 550px;
+}
+
+/* Make map-card take full width inside map-section */
+.map-section {
+  display: flex;
+  justify-content: center;
+}
+
+.map-card {
+  width: 100%;
+}
+
+
+
+
+
+
+
 /* RESPONSIVE */
 @media (max-width: 768px){
 
@@ -124,8 +388,14 @@
       
   }
 
+  .section-title {
+    margin-top: 10rem;
+    font-size: 3rem;
+      
+  }
+
   .mosaic-grid {
-    grid-auto-rows: 100px;
+    grid-auto-rows: 200px;
   }
   .mosaic-item.large {
     grid-row: span 2;
@@ -167,6 +437,57 @@
     font-size: 40px;
     top: 15px;
     right: 20px;
+  }
+   /* ===== Compact CTA Section ===== */
+.cta-section {
+  padding: 50px 10px 30px;   /* smaller top/bottom padding */
+}
+
+.cta-section h1 {
+  font-size: 2rem;           /* smaller heading */
+  margin-bottom: 20px;
+}
+
+.cta-subtext {
+  font-size: 0.9rem;         /* slightly smaller text */
+  margin-bottom: 25px;
+}
+
+.cta-container {
+  padding: 30px 15px 40px;   /* smaller container */
+  transform: rotate(-1deg);
+}
+
+.cta-btn {
+  padding: 10px 25px;        /* smaller button */
+  font-size: 0.85rem;
+}
+
+  /* ===== Footer ===== */
+  .site-footer {
+    padding: 40px 15px 20px;
+  }
+
+  .seo-footer {
+    font-size: 0.9rem;
+  }
+
+  /* Footer Polaroid Grid */
+  .footer-grid {
+    flex-direction: column;
+    gap: 25px;
+  }
+
+  .footer-col {
+    width: 100%;
+    transform: rotate(0deg);
+  }
+
+  /* ===== Flex Layout Fixes ===== */
+  .end {
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
   }
 }
 
