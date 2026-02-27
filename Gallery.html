@@ -90,77 +90,120 @@
     <label for="menu-toggle" class="overlay"></label>
 
     <style>
-        /* ========================
-           Nav bar
-        ======================== */
-        #menu-toggle { display: none; }
-        .menu-btn {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            width: 30px;
-            height: 25px;
-            cursor: pointer;
-            z-index: 1002;
-        }
-        .menu-btn span {
-            display: block;
-            height: 4px;
-            background: var(--fontcolor);
-            margin: 6px 0;
-            transition: 0.4s;
-        }
-        #menu-toggle:checked + .menu-btn span:nth-child(1) {
-            transform: rotate(45deg) translate(5px, 5px);
-        }
-        #menu-toggle:checked + .menu-btn span:nth-child(2) { opacity: 0; }
-        #menu-toggle:checked + .menu-btn span:nth-child(3) {
-            transform: rotate(-45deg) translate(6px, -6px);
-        }
-        .side-nav {
-            position: fixed;
-            top: 0;
-            right: -260px;
-            width: 260px;
-            height: 100%;
-            background: var(--OngleEnchanteColor);
-            padding-top: 80px;
-            transition: 0.4s ease;
-            z-index: 1001;
-            border: 2px solid var(--fontcolor);
-        }
-        .side-nav a {
-            display: block;
-            padding: 15px 25px;
-            font-size: 2rem;
-            color: var(--fontcolor);
-            text-decoration: none;
-            transition: 0.3s;
-        }
-        .side-nav a:hover {
-            background: var(--textcolor);
-            color: var(--background);
-        }
-        #menu-toggle:checked ~ .side-nav { right: 0; }
-        .overlay {
-            position: fixed;
-            inset: 0;
-            background: rgba(0,0,0,0.4);
-            opacity: 0;
-            visibility: hidden;
-            transition: 0.4s;
-            z-index: 1000;
-        }
-        #menu-toggle:checked ~ .overlay {
-            opacity: 1;
-            visibility: visible;
-        }
-        @media (max-width: 768px) {
-            .menu-btn span {
-                margin: 5px 0;
-            }
-        }
-    </style>
+
+  /* ========================
+   Nav bar
+======================== */
+  /* Hidden checkbox */
+  #menu-toggle {
+    display: none;
+    
+  }
+
+  /* Hamburger button */
+  .menu-btn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 30px;
+    height: 25px;
+    cursor: pointer;
+    z-index: 1002;
+  }
+
+  .menu-btn span {
+    display: block;
+    height: 4px;
+    background: var(--fontcolor);
+    margin: 6px 0;
+    transition: 0.4s;
+  }
+
+  /* Animate hamburger to X */
+  #menu-toggle:checked + .menu-btn span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+
+  #menu-toggle:checked + .menu-btn span:nth-child(2) {
+    opacity: 0;
+  }
+
+  #menu-toggle:checked + .menu-btn span:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -6px);
+  }
+
+  /* Side menu */
+  .side-nav {
+    position: fixed;
+    top: 0;
+    right: -260px;
+    width: 260px;
+    height: 100%;
+    background: #9c4d4d;
+    padding-top: 80px;
+    transition: 0.4s ease;
+    z-index: 1001;
+    border: 2px solid var(--fontcolor);
+  }
+
+  .side-nav a {
+    display: block;
+    padding: 15px 25px;
+    font-size: 2rem;
+    color: var(--fontcolor);
+    text-decoration: none;
+    transition: 0.3s;
+  }
+
+  .side-nav a:hover {
+    background: var(--textcolor);
+    color: var(--background);
+  }
+
+  /* Show menu when checked */
+  #menu-toggle:checked ~ .side-nav {
+    right: 0;
+    
+  }
+
+  /* Overlay */
+  .overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.699);
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.4s;
+    z-index: 1000;
+  }
+
+  #menu-toggle:checked ~ .overlay {
+    opacity: 1;
+    visibility: visible;
+  }
+
+.side-nav img {
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--fontcolor);
+  border-radius: 50%;
+}
+/* ========================
+   RESPONSIVE
+======================== */
+@media (max-width: 768px) {
+
+
+  .menu-btn span {
+    display: block;
+    height: 4px;
+    background: var(--fontcolor);
+    margin: 5px 0;
+    transition: 0.4s;
+  }
+  }
+
+</style>
 
     <!-- HEADER -->
     <header class="site-header" id="toppage">
