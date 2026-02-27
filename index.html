@@ -21,6 +21,54 @@
 
 </head>
 <body>
+  <!-- Loading Screen -->
+<div id="loader">
+  <div class="spinner"></div>
+  <style>
+    /* Loader overlay */
+#loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #ffffff; /* or a gradient matching your site */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  transition: opacity 0.5s ease;
+}
+
+/* Spinner */
+#loader .spinner {
+  width: 60px;
+  height: 60px;
+  border: 6px solid #9c4d4d; /* dark border color */
+  border-top: 6px solid #f5f5f5; /* lighter color for spinning effect */
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+/* Spinner animation */
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Hide loader when page is loaded */
+body.loaded #loader {
+  opacity: 0;
+  pointer-events: none;
+}
+  </style>
+  <script>
+  // Wait for everything to load
+  window.addEventListener("load", function() {
+    document.body.classList.add("loaded");
+  });
+</script>
+</div>
 
 <!-- Checkbox -->
 <input type="checkbox" id="menu-toggle">
@@ -447,7 +495,7 @@
       Les disponibilités sont limitées. Réservez dès maintenant pour garantir votre créneau — 
       les week-ends se remplissent rapidement.
     </p>
-    <a href="#" class="cta-btn">RÉSERVER MAINTENANT</a>
+    <a href="tel:5145955858" class="cta-btn">RÉSERVER MAINTENANT</a>
   </div>
 
   <footer class="footer">

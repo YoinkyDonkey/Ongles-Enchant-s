@@ -495,7 +495,7 @@ a {
 .polaroid-caption {
   margin-top: 18px;
   font-family: "Dancing Script", solid;
-  font-size: 15rem;
+  font-size: 2rem;
   font-weight: bold;
   letter-spacing: 1.5px;
   color: #000;
@@ -1214,55 +1214,65 @@ a {
 
 
 
-
 /* =========================
    MOBILE OPTIMIZATIONS
 ========================= */
 @media (max-width: 768px) {
 
-    .section-title {
-  font-size: 3rem;
-  
-}
-  
+  /* ===== General Section Titles ===== */
+  .section-title {
+    font-size: 3rem;
+  }
+
   /* ===== Hero Section ===== */
   .hero {
     padding: 8rem 1.5rem;
     margin: -3rem auto;
     border-radius: 2rem;
   }
-  
+
   .hero h1 {
     font-size: 3rem;
     line-height: 1.2;
   }
-  
+
   .hero h2 {
     font-size: 2rem;
     margin-bottom: 1.5rem;
   }
-  
+
+  /* ===== Images Grid ===== */
+  .image1 {
+    gap: 10px;
+  }
+
+  .image1 img {
+    flex: 1 1 45%;
+    max-width: 45%;
+    padding: 10px 10px 40px;
+  }
+
   /* ===== About Section ===== */
   .about-section {
     padding: 0 20px;
     margin: 5rem auto;
     text-align: center;
   }
-  
+
   .about-section h2 {
     font-size: 2rem;
   }
-  
+
   .about-section p {
     font-size: 1.2rem;
   }
-  
+
   .about-section img {
     width: 70%;
     height: auto;
     margin: 1.5rem auto;
   }
-  
+
   /* ===== Services / Polaroids ===== */
   .services-columns {
     flex-direction: column;
@@ -1272,260 +1282,182 @@ a {
 
   .services-container {
     width: 90%;
-    transform: rotate(0deg); /* remove rotation for mobile */
+    transform: rotate(0deg);
     padding: 15px;
   }
-  
+
   .category-title {
     font-size: 1.5rem;
   }
-  
+
   .service-card {
     font-size: 1rem;
     padding: 10px;
   }
-  
+
   #total-container {
     width: 95%;
     font-size: 1.2rem;
   }
-  
-  /* ===== Hero Videos ===== */
-  
-  /* =========================
-   MOBILE VIDEOS - 2 COLUMNS
-========================= */
 
-  .hero-videos {
+  /* ===== Hero Videos & Photo Gallery ===== */
+  .hero-videos,
+  .photo-gallery {
     display: grid;
-    grid-template-columns: repeat(2, 1fr); /* 2 videos per row */
+    grid-template-columns: repeat(2, 1fr);
     gap: 15px;
     padding: 0 15px;
     justify-items: center;
   }
 
-  .video-container {
-    width: 100%;              /* fill grid column */
-    padding: 10px;
-    transform: rotate(0deg);  /* remove rotation for clean grid */
+  .video-container,
+  .photo,
+  .contact-card,
+  .map-card {
+    width: 90%;
+    transform: rotate(0deg);
+    padding: 15px 20px 40px;
   }
 
-  .video-container video {
-    width: 100%;
-    aspect-ratio: 9 / 16;     /* keep vertical reel format */
-    object-fit: cover;
-  }
-
-  .polaroid-caption {
-    font-size: 5rem;
-  }
-
-  /* Optional: smaller hover effect for mobile */
-  .video-container:hover {
-    transform: scale(1.03);
-  }
-
-  
-  
-  /* ===== Photo Gallery ===== */
-.photo-gallery {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr); /* 2 equal columns */
-    gap: 15px;
-    padding: 0 15px;
-  }
-
-  .photo {
-    width: 100%;           /* fill grid column */
-    padding: 15px 15px 35px 15px;
-    transform: rotate(0deg); /* remove rotation for clean layout */
-  }
-
+  .video-container video,
   .photo img {
     width: 100%;
-    height: 360px;         /* consistent height */
     object-fit: cover;
     border-radius: 6px;
   }
+
+  .video-container video {
+    aspect-ratio: 9 / 16;
+  }
+
+  .photo img {
+    height: 360px;
+  }
+
+  .video-container:hover,
   .photo:hover {
-    transform: scale(1.03); /* subtle zoom instead */
+    transform: scale(1.03);
   }
-}
-  
+
+  .polaroid-caption {
+    font-size: 0.95rem;
+  }
+
   /* ===== Contact Cards ===== */
-  .contact-card {
-    width: 90%;
-    transform: rotate(0deg);
-    padding: 20px 15px 40px;
-  }
-  
   .contact-card h3 {
     font-size: 2rem;
   }
-  
+
   .contact-card p {
     font-size: 1rem;
   }
-  
+
   .btn.outline {
     padding: 10px 20px;
     font-size: 0.9rem;
   }
-  
+
   /* ===== Map Section ===== */
+  .map-section,
   .map-card {
-    width: 95%;
     padding: 40px 15px 60px;
+  }
+
+  .map-card {
+    max-width: 100%;
     transform: rotate(0deg);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
   }
-  
-  .map-card h2 {
-    font-size: 2rem;
+
+  .map-card:hover {
+    transform: scale(1.02);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
   }
-  
-  .map-card p {
-    font-size: 1rem;
-  }
-  
+
   .map-card iframe {
     height: 250px;
   }
-  
+
+  .map-card h2 {
+    font-size: 2rem;
+  }
+
+  .map-card p {
+    font-size: 1rem;
+  }
+
   /* ===== Hours Section ===== */
   .HeureOuverture1 {
-    width: 90%;
+    max-width: 90%;
     padding: 30px 20px;
+    transform: rotate(0deg);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.35);
   }
-  
+
+  .HeureOuverture1:hover {
+    transform: scale(1.02);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+  }
+
   .HeureOuverture1 h1 {
     font-size: 28px;
     margin-bottom: 20px;
   }
-  
+
   .hours-list .day,
   .hours-list .time {
     font-size: 16px;
   }
-  
+
+  /* ===== Compact CTA Section ===== */
+.cta-section {
+  padding: 50px 10px 30px;   /* smaller top/bottom padding */
+}
+
+.cta-section h1 {
+  font-size: 2rem;           /* smaller heading */
+  margin-bottom: 20px;
+}
+
+.cta-subtext {
+  font-size: 0.9rem;         /* slightly smaller text */
+  margin-bottom: 25px;
+}
+
+.cta-container {
+  padding: 30px 15px 40px;   /* smaller container */
+  transform: rotate(-1deg);
+}
+
+.cta-btn {
+  padding: 10px 25px;        /* smaller button */
+  font-size: 0.85rem;
+}
+
   /* ===== Footer ===== */
   .site-footer {
     padding: 40px 15px 20px;
   }
-  
+
   .seo-footer {
     font-size: 0.9rem;
   }
-  /* =========================
-   HERO VIDEOS - RESPONSIVE
-========================= */
 
-.hero-videos {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 50px;
-  flex-wrap: wrap;
-  margin-bottom: 80px;
-  padding: 40px 20px;
-}
-
-/* Polaroid card */
-.video-container {
-  background: #fff;
-  padding: 18px 18px 70px 18px;
-  width: 260px;
-  border-radius: 4px;
-  position: relative;
-  transform-origin: center;
-  transition: all 0.4s ease;
-  box-shadow:
-    0 25px 45px rgba(0,0,0,0.2),
-    0 8px 15px rgba(0,0,0,0.1);
-}
-
-/* Desktop tilt only */
-@media (min-width: 769px) {
-  .video-container:nth-child(odd) {
-    transform: rotate(-4deg);
-  }
-
-  .video-container:nth-child(even) {
-    transform: rotate(4deg);
-  }
-}
-
-/* Hover */
-.video-container:hover {
-  transform: rotate(0deg) scale(1.05);
-  box-shadow: 
-    0 30px 60px rgba(0, 0, 0, 0.25),
-    0 10px 20px rgba(0, 0, 0, 0.15);
-  z-index: 3;
-}
-
-/* Video */
-.video-container video {
-  width: 100%;
-  aspect-ratio: 9 / 16;
-  object-fit: cover;
-  display: block;
-  border-radius: 2px;
-}
-
-/* Tape */
-.video-container::before {
-  content: "";
-  position: absolute;
-  top: -12px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 80px;
-  height: 25px;
-  background: rgba(255, 230, 180, 0.75);
-  border-radius: 3px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
-
-/* Caption */
-.polaroid-caption {
-  position: absolute;
-  bottom: 18px;
-  left: 0;
-  right: 0;
-  text-align: center;
-  font-size: 0.95rem;
-  color: #555;
-}
-
-/* ========================= 
-   MOBILE FIX
-========================= */
-
-@media (max-width: 768px) {
-
-  .hero-videos {
+  /* Footer Polaroid Grid */
+  .footer-grid {
     flex-direction: column;
-    align-items: center;
-    gap: 70px;
+    gap: 25px;
   }
 
-  .video-container {
-    width: 90%;
-    max-width: 320px;
-    transform: none;   /* remove tilt */
+  .footer-col {
+    width: 100%;
+    transform: rotate(0deg);
   }
 
-  .video-container:hover {
-    transform: scale(1.03);
-  }
+  /* ===== Flex Layout Fixes ===== */
   .end {
     flex-direction: column;
     align-items: center;
     gap: 40px;
-  }
-
-  .HeureOuverture1,
-  .map-section {
-    max-width: 90%;
   }
 }
