@@ -493,11 +493,14 @@ a {
 }
 
 .polaroid-caption {
-  margin-top: 12px;
+  margin-top: 18px;
   font-family: "Dancing Script", solid;
-  font-size: 2rem;
-  color: #000000;
+  font-size: 15rem;
+  font-weight: bold;
+  letter-spacing: 1.5px;
+  color: #000;
   text-align: center;
+  text-shadow: 0 4px 10px rgba(0,0,0,0.2);
 }
 .video-container::before {
   content: "";
@@ -513,35 +516,26 @@ a {
   border-radius: 3px;
 }
 /* ========================
-   GALLERY
+   BIGGER GALLERY STYLE
 ======================== */
-.gallery a {
-    margin: 0 auto;
-}
-
-.voirplus {
-    display: grid;
-    place-items: center;
-    margin: 50px 0;
-}
 
 .photo-gallery {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 20px;
-    max-width: 1200px;
+    gap: 40px; /* more spacing between bigger cards */
+    max-width: 1800px;
     margin: auto;
-    padding: 0 1rem;
+    padding: 0 2rem;
 }
 
-/* Polaroid card */
+/* Bigger Polaroid card */
 .photo {
     background: #ffffff;
-    padding: 15px 15px 50px 15px; /* extra bottom space for caption */
-    width: 180px;
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.527);
-    border-radius: 6px;
+    padding: 20px 20px 70px 20px; /* more bottom space */
+    width: 300px; /* 🔥 bigger size */
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    border-radius: 10px;
     position: relative;
     display: flex;
     flex-direction: column;
@@ -550,58 +544,67 @@ a {
     transform-origin: bottom center;
 }
 
-/* Slight rotation for fun polaroid effect */
+/* Slight rotation */
 .photo:nth-child(odd) {
     transform: rotate(-2deg);
-    border: 1px solid black;
-}
-.photo:nth-child(even) {
-    transform: rotate(2deg);
-    border: 1px solid black;
+    border: 2px solid black;
 }
 
-/* Photo image inside polaroid */
+.photo:nth-child(even) {
+    transform: rotate(2deg);
+    border: 2px solid black;
+}
+
+/* Bigger Image */
 .photo img {
     width: 100%;
-    height: auto;
-    border-radius: 3px;
+    height: 300px; /* 🔥 consistent bigger height */
+    border-radius: 6px;
     object-fit: cover;
     display: block;
     transition: transform 0.5s ease;
-    border: 1px solid black;
+    border: 2px solid black;
 }
 
-.photo:hover img {
-    transform: scale(1.08);
-}
-
-/* Hover effect for polaroid card */
+/* Stronger hover effect */
 .photo:hover {
-    transform: rotate(0deg) scale(1.05);
-    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+    transform: rotate(0deg) scale(1.08);
+    box-shadow: 0 35px 70px rgba(0, 0, 0, 0.5);
     z-index: 2;
 }
 
-/* Optional caption under photo */
+.photo:hover img {
+    transform: scale(1.1);
+}
+
+/* Bigger caption */
 .photo .caption {
-    margin-top: 12px;
+    margin-top: 16px;
     font-family: 'Cursive', sans-serif;
-    font-size: 0.9rem;
-    color: #555;
+    font-size: 1.1rem;
+    color: #444;
     text-align: center;
 }
+
+/* Bigger decorative pin */
 .photo::after {
   content: "";
   position: absolute;
-  top: -2px;
+  top: -6px;
   left: 50%;
   transform: translateX(-50%);
-  width: 14px;
-  height: 14px;
+  width: 18px;
+  height: 18px;
   background: radial-gradient(circle at 30% 30%, #ff6b6b, #c0392b);
   border-radius: 50%;
-  box-shadow:
-    0 3px 6px rgba(0,0,0,0.3);
+  box-shadow: 0 5px 10px rgba(0,0,0,0.4);
+}
+
+.voirplus {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 40px auto;
 }
 
 /* ========================
@@ -840,9 +843,9 @@ a {
 }
 
 /* Heading & text */
-.map-card h2 {
+.end .map-card h2 {
   margin-top: 20px;
-  font-size: 2.5rem;
+  font-size: 3rem;
   color: #d4a373; /* elegant warm tone */
   text-shadow:
      -1px -1px 0 #000000,
@@ -880,48 +883,68 @@ a {
   box-shadow:
     0 3px 6px rgba(0,0,0,0.3);
 }
-/* ========================
-   HOURS
-======================== */
+/* =========================
+   HOURS POLAROID STYLE
+========================= */
 .hours {
     text-align: center;
     padding: 3rem 1rem;
+    display: flex;
+    justify-content: center;
 }
 
-.hours ul {
-    list-style: none;
-    padding: 0;
-}
-
-.hours li {
-    margin-bottom: 0.8rem;
-}
-
+/* Polaroid-style card */
 .HeureOuverture1 {
-    background-color: var(--background);
-    color: var(--fontcolor);
-    padding: 40px 30px;
-    border-radius: 2rem;
+    background: #352626; /* dark vintage tone */
+    color: #ffc68d;      /* warm text color */
+    padding: 60px 30px 80px;
+    border-radius: 6px;
     max-width: 500px;
+    width: 100%;
     margin: 2rem auto;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.45);
     text-align: center;
     font-family: 'Playfair Display', serif;
-    border: 1px solid var(--OngleEnchanteSecondColor);
+    transition: all 0.35s ease;
+    transform-origin: bottom center;
+    position: relative;
+    border: 1px solid black;
 }
 
-.HeureOuverture1 h1 {
-    font-size: 36px;
+/* Slight rotation for polaroid effect */
+.HeureOuverture1:nth-child(odd) {
+    transform: rotate(2deg);
+}
+.HeureOuverture1:nth-child(even) {
+    transform: rotate(-2deg);
+}
+
+/* Hover effect to lift and straighten */
+.HeureOuverture1:hover {
+    transform: rotate(0deg) scale(1.03);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+    z-index: 2;
+}
+
+/* Heading */
+.end .HeureOuverture1 h1 {
+    font-size: 3rem;
+    color: #d4a373;
+    text-shadow:
+        -1px -1px 0 #000000,
+         1px -1px 0 #33333346,
+        -1px  1px 0 #33333346,
+         1px  1px 0 #333;
     margin-bottom: 25px;
     letter-spacing: 1px;
-    text-transform: uppercase;
-    text-shadow: 2px 2px 5px rgba(0,0,0,0.15);
 }
 
+/* Hours list */
 .hours-list {
     list-style: none;
     padding: 0;
-    margin: 0;
+    margin: 0 0 30px;
+    font-size: 1.2rem;
 }
 
 .hours-list li {
@@ -940,12 +963,26 @@ a {
 
 .hours-list .day {
     font-weight: 600;
-    font-size: 18px;
+    font-size: 1.1rem;
 }
 
 .hours-list .time {
     font-weight: 400;
-    font-size: 18px;
+    font-size: 1.1rem;
+}
+
+/* Optional "polaroid pin" effect */
+.HeureOuverture1::after {
+    content: "";
+    position: absolute;
+    top: 1px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 14px;
+    height: 14px;
+    background: radial-gradient(circle at 30% 30%, #ff6b6b, #c0392b);
+    border-radius: 50%;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.3);
 }
 
 /* =========================
@@ -957,6 +994,7 @@ a {
   text-align: center;
   color: antiquewhite;
   position: relative;
+  border-top: 1px solid rgba(255,255,255,0.08);
 }
 
 
@@ -969,8 +1007,197 @@ a {
   color: var(--fontcolor);
 }
 
+/* =========================
+   CTA SECTION
+========================= */
 
+.cta-section {
+  background: #19173b; /* beige vintage */
+  padding: 120px 20px 80px;
+  text-align: center;
+  font-family: "Playfair Display", serif;
+  color: #3e2f2f;
+}
 
+.cta-container {
+  max-width: 800px;
+  margin: 0 auto 100px;
+  background: #ffffff;
+  padding: 60px 40px 80px;
+  box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+  border-radius: 8px;
+  position: relative;
+  transform: rotate(-1deg);
+  border: 1px solid black;
+}
+/* Petite "punaise" décorative */
+.cta-container::before {
+  content: "";
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 22px;
+  height: 22px;
+  background: radial-gradient(circle at 30% 30%, #d96b6b, #9e2f2f);
+  border-radius: 50%;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.25);
+}
+
+.cta-small {
+  font-size: 1rem;
+  letter-spacing: 3px;
+  color: #b76e79; /* vieux rose */
+  margin-bottom: 20px;
+}
+
+.cta-section h1 {
+  font-size: 3.8rem;
+  font-weight: 500;
+  margin-bottom: 25px;
+}
+
+.cta-subtext {
+  font-size: 1.1rem;
+  color: #6b4f4f;
+  margin-bottom: 40px;
+  line-height: 1.7;
+}
+
+/* Bouton rétro */
+.cta-btn {
+  display: inline-block;
+  padding: 16px 45px;
+  background: #57242c;
+  color: white;
+  border-radius: 50px;
+  text-decoration: none;
+  font-size: 1rem;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 20px rgba(183,110,121,0.4);
+}
+
+.cta-btn:hover {
+  background: #a05863;
+  transform: translateY(-4px);
+}
+
+/* =========================
+   FOOTER - POLAROID GRID
+========================= */
+
+.footer {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 50px;
+}
+
+/* Cartes polaroid */
+.footer-col {
+  background: #ffffff;
+  width: 300px;
+  padding: 30px 25px 50px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+  border-radius: 6px;
+  position: relative;
+  text-align: center;
+  transition: 0.4s ease;
+}
+
+.footer-col:nth-child(odd) {
+  transform: rotate(-2deg);
+}
+
+.footer-col:nth-child(even) {
+  transform: rotate(2deg);
+}
+
+.footer-col:hover {
+  transform: rotate(0deg) scale(1.05);
+  box-shadow: 0 35px 70px rgba(0,0,0,0.25);
+}
+
+.footer-col h3 {
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+}
+
+.footer-col h4 {
+  font-size: 0.9rem;
+  letter-spacing: 2px;
+  margin-bottom: 20px;
+  color: #b76e79;
+}
+
+.footer-col p,
+.footer-col li {
+  font-size: 0.95rem;
+  color: #6b4f4f;
+  line-height: 1.6;
+}
+
+.footer-col ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-col ul li {
+  margin-bottom: 10px;
+}
+
+.footer-col a {
+  text-decoration: none;
+  color: #6b4f4f;
+  transition: 0.3s;
+}
+
+.footer-col a:hover {
+  color: #b76e79;
+}
+
+/* Bas du footer */
+.footer-bottom {
+  margin-top: 80px;
+  text-align: center;
+  font-size: 0.8rem;
+  color: #7a5c5c;
+}
+/* =========================
+   SIDE BY SIDE LAYOUT
+========================= */
+
+.end {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  gap: 60px;              /* space between the two sections */
+  padding: 80px 40px;
+  flex-wrap: wrap;        /* allows stacking on small screens */
+}
+
+/* Make both sections same width */
+.HeureOuverture1,
+.map-section {
+  flex: 1;
+  max-width: 550px;
+}
+
+/* Make map-card take full width inside map-section */
+.map-section {
+  display: flex;
+  justify-content: center;
+}
+
+.map-card {
+  width: 100%;
+}
 
 
 
@@ -1065,34 +1292,65 @@ a {
   
   /* ===== Hero Videos ===== */
   
+  /* =========================
+   MOBILE VIDEOS - 2 COLUMNS
+========================= */
+
   .hero-videos {
-    flex-direction: column;
-    gap: 20px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 videos per row */
+    gap: 15px;
+    padding: 0 15px;
+    justify-items: center;
   }
-  
+
   .video-container {
-    width: 90%;
-    transform: rotate(0deg);
+    width: 100%;              /* fill grid column */
+    padding: 10px;
+    transform: rotate(0deg);  /* remove rotation for clean grid */
   }
-  
+
+  .video-container video {
+    width: 100%;
+    aspect-ratio: 9 / 16;     /* keep vertical reel format */
+    object-fit: cover;
+  }
+
   .polaroid-caption {
-    font-size: 1.5rem;
+    font-size: 5rem;
   }
+
+  /* Optional: smaller hover effect for mobile */
+  .video-container:hover {
+    transform: scale(1.03);
+  }
+
   
   
   /* ===== Photo Gallery ===== */
-  .photo-gallery {
+.photo-gallery {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 equal columns */
     gap: 15px;
+    padding: 0 15px;
   }
-  
+
   .photo {
-    width: 90%;
-    transform: rotate(0deg);
+    width: 100%;           /* fill grid column */
+    padding: 15px 15px 35px 15px;
+    transform: rotate(0deg); /* remove rotation for clean layout */
   }
-  
-  .photo .caption {
-    font-size: 0.8rem;
+
+  .photo img {
+    width: 100%;
+    height: 360px;         /* consistent height */
+    object-fit: cover;
+    border-radius: 6px;
   }
+  .photo:hover {
+    transform: scale(1.03); /* subtle zoom instead */
+  }
+}
   
   /* ===== Contact Cards ===== */
   .contact-card {
@@ -1159,9 +1417,6 @@ a {
   }
   /* =========================
    HERO VIDEOS - RESPONSIVE
-========================= */
-/* ========================= 
-   POLAROID VIDEO SECTION
 ========================= */
 
 .hero-videos {
@@ -1263,5 +1518,14 @@ a {
   .video-container:hover {
     transform: scale(1.03);
   }
-}
+  .end {
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+  }
+
+  .HeureOuverture1,
+  .map-section {
+    max-width: 90%;
+  }
 }
