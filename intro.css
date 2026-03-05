@@ -1,0 +1,106 @@
+/* --- Root Variables --- */
+:root {
+  --color-primary: #d6aa77;
+  --color-secondary: #f19b45;
+  --color-title: #856429;
+  --color-accent: #fabc75;
+  --color-text: #222;
+  --color-text-light: #555;
+  --color-text-muted: #888;
+  --color-white: #fff;
+  --color-stars: #f5c518;
+  --bg-body: #a03935;
+  --bg-section-light: #6b2755;
+  --bg-section-alt: #a56161;
+  --shadow-light: rgba(0,0,0,0.05);
+  --shadow-medium: rgba(0,0,0,0.1);
+  --shadow-strong: rgba(0,0,0,0.3);
+  --shadow-hover: rgba(196,155,108,0.6);
+  --gradient-button: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+  --gradient-button-hover: linear-gradient(135deg, var(--color-secondary), var(--color-primary));
+  --card-gradient: linear-gradient(135deg, #fdf6f0, #fff0e6);
+}
+
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Cinzel', serif;
+}
+
+/* Full screen layout */
+body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
+  background: var(--bg-body);
+  color: var(--color-white);
+}
+
+/* Background image */
+.background {
+  position: fixed;
+  inset: 0;
+  background: url("Photo/Nails/green.jpg") center/cover no-repeat;
+  filter: blur(8px);
+  transform: scale(1.1);
+  z-index: -2;
+}
+
+/* Overlay using brand color */
+.background::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(160, 57, 53, 0.75); /* matches --bg-body */
+}
+
+/* Language box */
+.language-box {
+  text-align: center;
+  padding: 60px 80px;
+  border-radius: 20px;
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(12px);
+  border: 2px solid var(--color-primary);
+  box-shadow: 0 25px 60px var(--shadow-strong);
+}
+
+/* Title */
+.language-box h1 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+  color: var(--color-primary);
+  letter-spacing: 2px;
+}
+
+/* Subtitle */
+.language-box p {
+  margin-bottom: 40px;
+  font-size: 1.1rem;
+  color: var(--color-accent);
+}
+
+/* Buttons */
+.lang-buttons a {
+  display: inline-block;
+  margin: 10px 20px;
+  padding: 15px 50px;
+  text-decoration: none;
+  color: var(--color-white);
+  background: var(--gradient-button);
+  border-radius: 50px;
+  font-weight: bold;
+  transition: 0.3s ease;
+  box-shadow: 0 10px 25px var(--shadow-medium);
+}
+
+.lang-buttons a:hover {
+  background: var(--gradient-button-hover);
+  transform: translateY(-3px);
+  box-shadow: 0 15px 35px var(--shadow-hover);
+}

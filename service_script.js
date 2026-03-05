@@ -1,0 +1,121 @@
+document.addEventListener('DOMContentLoaded', () => {
+  // ========================
+  // SELECT ELEMENTS
+  // ========================
+  const serviceCards = document.querySelectorAll('.service-card');
+  const totalPriceEl = document.getElementById('total-price');
+  const totalTimeEl = document.getElementById('total-time');
+  const infoIcons = document.querySelectorAll('.info-icon');
+
+  // ========================
+  // CREATE TOOLTIP ELEMENT
+  // ========================
+  const tooltip = document.createElement('div');
+  tooltip.className = 'info-tooltip';
+  document.body.appendChild(tooltip);
+
+  // ========================
+  // FUNCTION TO UPDATE TOTALS
+  // ========================
+  const updateTotals = () => {
+    let totalPrice = 0;
+    let totalTime = 0;
+
+    serviceCards.forEach(card => {
+      if (card.classList.contains('selected')) {
+        const price = parseFloat(card.dataset.price) || 0;
+        const duration = parseFloat(card.dataset.duration) || 0;
+        totalPrice += price;
+        totalTime += duration;
+      }
+    });
+
+    totalPriceEl.textContent = totalPrice.toFixed(2);
+    totalTimeEl.textContent = totalTime;
+  };
+
+  // ========================
+  // SERVICE CARD CLICK (ONE PER CATEGORY)
+  // ========================
+  serviceCards.forEach(card => {
+    card.addEventListener('click', () => {
+      const category = card.dataset.category;
+
+      // Deselect other cards in the same category
+      serviceCards.forEach(c => {
+        if (c.dataset.category === category && c !== card) {
+          c.classList.remove('selected');
+        }
+      });
+
+      // Toggle clicked card
+      card.classList.toggle('selected');
+
+      // Update totals
+      updateTotals();
+    });
+  });
+
+  // ========================
+  // INFO ICON CLICK (TOOLTIP)
+  // ========================
+  infoIcons.forEach(icon => {
+    icon.addEventListener('click', (e) => {
+      e.stopPropagation(); // prevent card selection
+
+      const infoText = icon.dataset.info || 'No additional info available.';
+      tooltip.textContent = infoText;
+
+      // Position tooltip below the icon
+      const rect = icon.getBoundingClientRect();
+      tooltip.style.top = `${rect.bottom + window.scrollY + 6}px`;
+      tooltip.style.left = `${rect.left + window.scrollX}px`;
+      tooltip.style.display = 'block';
+    });
+  });
+
+  // Hide tooltip when clicking anywhere else
+  document.addEventListener('click', () => {
+    tooltip.style.display = 'none';
+  });
+  // Mobile Menu Toggle
+const menuToggle = document.querySelector('.menu-toggle');
+const nav = document.querySelector('header nav');
+
+menuToggle.addEventListener('click', () => {
+  nav.classList.toggle('active');
+});
+
+// Scroll fade-in animation
+const faders = document.querySelectorAll('.fade-in');
+const appearOptions = { threshold: 0.2 };
+
+const appearOnScroll = new IntersectionObserver(function(entries, observer){
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, appearOptions);
+
+faders.forEach(fader => { appearOnScroll.observe(fader); });
+
+  // ========================
+  // SCROLL-BASED BACKGROUND COLOR CHANGE
+  // ========================
+  // const startColor = [76, 120, 95]; // dark green
+  // const endColor = [172, 147, 98];  // light beige
+
+  window.addEventListener('scroll', () => {
+    const scrollTop = window.scrollY;
+    const docHeight = document.body.scrollHeight - window.innerHeight;
+    const scrollPercent = scrollTop / docHeight;
+
+    const r = Math.round(startColor[0] + (endColor[0] - startColor[0]) * scrollPercent);
+    const g = Math.round(startColor[1] + (endColor[1] - startColor[1]) * scrollPercent);
+    const b = Math.round(startColor[2] + (endColor[2] - startColor[2]) * scrollPercent);
+
+    document.documentElement.style.setProperty('--backgroundcolor', `rgb(${r}, ${g}, ${b})`);
+  });
+});
