@@ -61,7 +61,7 @@ body {
 /* --- Rating Box --- */
 .rating-box {
   text-align: center;
-  padding: clamp(2rem, 5vw, 4rem) clamp(1.5rem, 5vw, 5rem); /* responsive padding */
+  padding: clamp(2rem, 5vw, 4rem) clamp(1.5rem, 5vw, 5rem);
   border-radius: 20px;
   background: rgba(255,255,255,0.08);
   backdrop-filter: blur(12px);
@@ -123,6 +123,13 @@ button:hover {
   box-shadow: 0 15px 35px var(--shadow-hover);
 }
 
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+  transform: none;
+  box-shadow: 0 5px 15px var(--shadow-medium);
+}
+
 /* --- Status Message --- */
 #status {
   margin-top: 1.5rem;
@@ -137,7 +144,7 @@ button:hover {
   }
 
   .stars {
-    font-size: 4rem; /* fallback for very small screens */
+    font-size: 4rem;
     gap: 1rem;
   }
 
@@ -146,7 +153,6 @@ button:hover {
     width: 100%;
     text-align: center;
   }
-  
 }
 </style>
 </head>
@@ -173,6 +179,7 @@ button:hover {
 <script>
 let rating = 0;
 const stars = document.querySelectorAll(".star");
+const button = document.querySelector("button");
 
 // Select star rating
 stars.forEach(star => {
@@ -189,6 +196,10 @@ function sendRating() {
     return;
   }
 
+  // Disable the button immediately
+  button.disabled = true;
+  button.innerText = "Sending... / Envoi...";
+
   fetch("https://script.google.com/macros/s/AKfycbymGnP4UrJdNF9L51fWO_X8m5YzAKEnTTzCDz5audavfg7f2yroVht0gdfFxOFVR-Yw/exec", {
     method: "POST",
     mode: "no-cors",
@@ -197,12 +208,16 @@ function sendRating() {
   })
   .then(() => {
     document.getElementById("status").innerText = "✅ Rating submitted! / Évaluation envoyée !";
-    stars.forEach(s=>s.classList.remove("active"));
-    rating=0;
+    stars.forEach(s => s.classList.remove("active"));
+    rating = 0;
+    button.innerText = "Send Rating / Envoyer l'évaluation";
+    button.disabled = false; // Re-enable if you want user to rate again
   })
-  .catch(err=>{
+  .catch(err => {
     console.error(err);
     document.getElementById("status").innerText = "❌ Error sending rating / Erreur lors de l'envoi";
+    button.innerText = "Send Rating / Envoyer l'évaluation";
+    button.disabled = false; // Allow retry
   });
 }
 </script>
