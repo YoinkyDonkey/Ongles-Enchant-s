@@ -309,6 +309,17 @@ footer { text-align:center; padding:30px; color: var(--color-white); font-size:1
 
 /* --- Responsive Mobile Styles --- */
 @media(max-width:768px) {
+
+  html, body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
 header {
   display: flex;
   align-items: center;         /* vertical centering */
@@ -319,33 +330,33 @@ header {
 
 header h1 {
   margin: 0;
-  position: absolute;          /* center horizontally */
-  left: 50%;
-  transform: translateX(-50%);
+  position: absolute;
 }
 
-
-
 header .nav-button {
-  margin-left: 0;       /* remove the auto push */
-  margin-right: auto;    /* optional for spacing */
+  background-color: rgba(77, 4, 4, 0.267);
+  top: 40rem;
   position: relative;    /* keeps it on the same level as h1 */
 }
 /* Dropdown nav - initially hidden */
 header nav {
-  margin: 0;
+  margin: 0 auto;
   width: 100%;
-  background: rgba(0, 0, 0, 0.8);   /* semi-transparent black */
+  background: rgba(0, 0, 0, 0.527);
+  display: flex;
   flex-direction: column;
+
+  align-items: center;   /* ✅ centers links horizontally */
+  justify-content: center;
+
   text-align: center;
   overflow: hidden;
   max-height: 0;
   border-radius: 0 0 10px 10px;
   transition: max-height 0.4s ease;
   position: absolute;
-  top: 100px; /* below header */
+  top: 100px;
   left: 0;
-  display: flex;
 }
  header nav a {
   margin: 12px 0;
@@ -358,22 +369,12 @@ header nav {
 header nav.active {
   max-height: 500px;
 } .menu-toggle { display: block; margin-left:auto; }
-  .hero { height:500px; padding:0 15px; }
+  .hero { 
+    height: 850px; 
+    padding:0 15px; 
+  }
   .hero h2 { font-size:24px; }
   .hero p { font-size:14px; }
-  .services-wrapper { flex-direction: column; align-items:center; gap:20px; }
-  .service { width:90%; padding:25px 20px; }
-  .gallery-grid { flex-direction: column; gap:20px; }
-  .polaroid { width:90%; }
-  /* Stack reviews vertically */
-  .reviews-container {
-    flex-direction: column;
-    align-items: center;
-    overflow-x: visible;      /* no horizontal scroll needed */
-    gap: 20px;                /* space between reviews */
-    padding-bottom: 0;
-  }
-
   /* Adjust individual review cards */
   .review {
     min-width: 90%;           /* almost full width of screen */

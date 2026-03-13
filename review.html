@@ -7,38 +7,24 @@
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
 
 <style>
-/* --- Root Variables --- */
 :root {
   --color-primary: #d6aa77;
   --color-secondary: #f19b45;
-  --color-title: #856429;
   --color-accent: #fabc75;
-  --color-text: #222;
-  --color-text-light: #555;
-  --color-text-muted: #888;
-  --color-white: #fff;
   --color-stars: #f5c518;
+  --color-white: #fff;
   --bg-body: #a03935;
-  --bg-section-light: #6b2755;
-  --bg-section-alt: #a56161;
-  --shadow-light: rgba(0,0,0,0.05);
-  --shadow-medium: rgba(0,0,0,0.1);
   --shadow-strong: rgba(0,0,0,0.3);
+  --shadow-medium: rgba(0,0,0,0.1);
   --shadow-hover: rgba(196,155,108,0.6);
   --gradient-button: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
   --gradient-button-hover: linear-gradient(135deg, var(--color-secondary), var(--color-primary));
-  --card-gradient: linear-gradient(135deg, #fdf6f0, #fff0e6);
 }
 
 /* Reset */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Cinzel', serif;
-}
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Cinzel', serif; }
 
-/* Full screen layout */
+/* Layout */
 body {
   height: 100vh;
   display: flex;
@@ -58,7 +44,7 @@ body {
   z-index: -1;
 }
 
-/* --- Rating Box --- */
+/* Rating Box */
 .rating-box {
   text-align: center;
   padding: clamp(2rem, 5vw, 4rem) clamp(1.5rem, 5vw, 5rem);
@@ -69,13 +55,12 @@ body {
   box-shadow: 0 25px 60px var(--shadow-strong);
   max-width: 90%;
   width: 100%;
-  margin: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-/* --- Title --- */
+/* Title */
 .rating-box h2 {
   font-size: clamp(1.5rem, 5vw, 2.5rem);
   margin-bottom: 2rem;
@@ -83,13 +68,13 @@ body {
   letter-spacing: 1.5px;
 }
 
-/* --- Stars --- */
+/* Stars */
 .stars {
   display: flex;
   justify-content: center;
   gap: clamp(0.5rem, 3vw, 1.5rem);
   font-size: clamp(2rem, 8vw, 5rem);
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
   flex-wrap: wrap;
 }
 
@@ -103,7 +88,26 @@ body {
 .star.active { color: var(--color-stars); }
 .star:hover { transform: scale(1.3); }
 
-/* --- Button --- */
+/* Comment Box */
+.comment-section { width: 100%; margin-bottom: 1.5rem; }
+
+#comment {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  border-radius: 15px;
+  border: 1px solid var(--color-primary);
+  font-family: 'Cinzel', serif;
+  font-size: clamp(1rem, 3vw, 1.2rem);
+  resize: vertical;
+  outline: none;
+}
+
+#comment:focus {
+  border-color: var(--color-stars);
+  box-shadow: 0 0 10px var(--shadow-hover);
+}
+
+/* Button */
 button {
   font-size: clamp(1.2rem, 4vw, 1.5rem);
   padding: clamp(0.8rem, 2vw, 1rem) clamp(2rem, 5vw, 3rem);
@@ -130,29 +134,18 @@ button:disabled {
   box-shadow: 0 5px 15px var(--shadow-medium);
 }
 
-/* --- Status Message --- */
+/* Status Message */
 #status {
   margin-top: 1.5rem;
   font-size: clamp(1rem, 3vw, 1.2rem);
   color: var(--color-accent);
 }
 
-/* --- Responsive Centering --- */
+/* Responsive */
 @media (max-width: 600px) {
-  .rating-box {
-    padding: 2rem 1.5rem;
-  }
-
-  .stars {
-    font-size: 4rem;
-    gap: 1rem;
-  }
-
-  button {
-    font-size: 1rem;
-    width: 100%;
-    text-align: center;
-  }
+  .rating-box { padding: 2rem 1.5rem; }
+  .stars { font-size: 4rem; gap: 1rem; }
+  button { font-size: 1rem; width: 100%; text-align: center; }
 }
 </style>
 </head>
@@ -171,6 +164,10 @@ button:disabled {
     <span class="star" data-value="5">★</span>
   </div>
 
+  <div class="comment-section">
+    <textarea id="comment" placeholder="Tell us more / Dites-nous en plus..." rows="3"></textarea>
+  </div>
+
   <button onclick="sendRating()">Send Rating / Envoyer l'évaluation</button>
 
   <p id="status"></p>
@@ -181,7 +178,7 @@ let rating = 0;
 const stars = document.querySelectorAll(".star");
 const button = document.querySelector("button");
 
-// Select star rating
+// Star selection
 stars.forEach(star => {
   star.addEventListener("click", () => {
     rating = star.dataset.value;
@@ -189,35 +186,41 @@ stars.forEach(star => {
   });
 });
 
-// Send rating to Apps Script
+// Send rating to Google Apps Script
 function sendRating() {
   if(rating == 0){
     alert("Please select a rating first! / Veuillez d'abord sélectionner une note !");
     return;
   }
 
-  // Disable the button immediately
   button.disabled = true;
   button.innerText = "Sending... / Envoi...";
+
+  const comment = document.getElementById("comment").value;
 
   fetch("https://script.google.com/macros/s/AKfycbymGnP4UrJdNF9L51fWO_X8m5YzAKEnTTzCDz5audavfg7f2yroVht0gdfFxOFVR-Yw/exec", {
     method: "POST",
     mode: "no-cors",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ rating: rating })
+    body: JSON.stringify({
+      rating: rating,
+      comment: comment,
+      timestamp: new Date().toISOString()
+    })
   })
   .then(() => {
     document.getElementById("status").innerText = "✅ Rating submitted! / Évaluation envoyée !";
     stars.forEach(s => s.classList.remove("active"));
     rating = 0;
+    document.getElementById("comment").value = "";
     button.innerText = "Send Rating / Envoyer l'évaluation";
-    button.disabled = false; // Re-enable if you want user to rate again
+    button.disabled = false;
   })
   .catch(err => {
     console.error(err);
     document.getElementById("status").innerText = "❌ Error sending rating / Erreur lors de l'envoi";
     button.innerText = "Send Rating / Envoyer l'évaluation";
-    button.disabled = false; // Allow retry
+    button.disabled = false;
   });
 }
 </script>

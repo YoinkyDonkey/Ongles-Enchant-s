@@ -295,7 +295,7 @@ footer { text-align:center; padding:30px; color: var(--color-white); font-size:1
 .fade-in.visible { opacity:1; transform:translateY(0); }
 
 
-/* --- RESPONSIVE --- */
+/* --- Responsive Mobile Styles --- */
 @media(max-width:768px) {
 
   html, body {
